@@ -1,0 +1,1975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Pose Atlas</title>
+<meta name="description" content="Faceless, minimalist pose references for photo shoots: solo and couple poses for street fashion, portrait, maternity, romantic and fine art nude sessions.">
+<meta property="og:title" content="The Pose Atlas">
+<meta property="og:description" content="Faceless, minimalist pose references for photo shoots: solo and couple poses for street fashion, portrait, maternity, romantic and fine art nude sessions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23191B1A'/%3E%3Cellipse cx='16' cy='9' rx='3.2' ry='3.8' fill='%23CDBFB0'/%3E%3Cpath d='M11 15c0-1.5 2.2-2.5 5-2.5s5 1 5 2.5l-1 6h-1.5l-.5 7h-4l-.5-7H12z' fill='%23CDBFB0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: editorial masthead, sticky selector rail, 3-up contact sheet of studio plates.
+   Single light look on purpose: every plate is a seamless paper backdrop, like a real studio. */
+:root {
+  color-scheme: light;
+  --paper: #F1F1EF;
+  --plate: #F7F6F4;
+  --ink: #151515;
+  --muted: #6D6C68;
+  --line: #DCDBD7;
+  --accent: #151515;
+  --accent-ink: #F7F6F4;
+  --studio-hi: #FBFAF8;
+  --studio-mid: #E8E6E2;
+  --studio-lo: #D8D5CF;
+  --prop1: #D3D0CA;
+  --prop2: #8C8882;
+  --prop3: #E6E3DE;
+  --win: #FDFCFA;
+  --winf: #CBC7C0;
+  --shadow: #2A2622;
+  --focus: #151515;
+  --display: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --body: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+/* masthead */
+.mast { padding-block: 36px 22px; display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: end; }
+.brand { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(40px, 7vw, 78px); line-height: .95; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+h1 em { font-style: italic; font-weight: 400; }
+.lede { max-width: 56ch; color: var(--muted); margin: 4px 0 0; font-size: 16px; }
+.mast-tools { display: flex; gap: 8px; align-items: center; }
+.icon-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--plate); border-radius: 999px; padding: 9px 14px; cursor: pointer; font-size: 14px; }
+.icon-btn:hover { border-color: var(--muted); }
+.icon-btn svg { width: 16px; height: 16px; }
+.count { font-family: var(--mono); font-size: 12px; min-width: 20px; height: 20px; border-radius: 10px; background: var(--ink); color: var(--paper); display: inline-grid; place-items: center; padding: 0 6px; }
+
+/* selector */
+.rail { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.rail-inner { display: grid; gap: 12px; padding-block: 14px; }
+.step { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; }
+.step-label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.who { display: flex; gap: 8px; flex-wrap: wrap; }
+.who button { display: inline-flex; align-items: center; gap: 10px; padding: 4px 16px 4px 6px; border-radius: 999px; border: 1px solid var(--line); background: var(--plate); cursor: pointer; font-weight: 500; }
+.who button svg { width: 30px; height: 34px; }
+.who button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.scen { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 7px 14px; cursor: pointer; font-size: 14px; display: inline-flex; gap: 8px; align-items: baseline; }
+.chip .n { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.why { background: var(--plate); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; }
+.why .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.sources { grid-column: 1 / -1; font-size: 12px; }
+.hov { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 18px 18px 16px; background: linear-gradient(180deg, rgba(247, 246, 244, 0) 0%, rgba(247, 246, 244, .9) 26%, rgba(247, 246, 244, .97) 100%); opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; pointer-events: none; }
+.hov-d { margin: 0; font-family: var(--display); font-size: 18px; line-height: 1.25; color: var(--ink); }
+.hov dl, .read { margin: 0; display: grid; gap: 7px; }
+.hov dl div, .read div { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline; }
+.hov dt, .read dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.hov dd, .read dd { margin: 0; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
+.read { border-top: 1px solid var(--line); padding-top: 14px; }
+.read dd { font-size: 14.5px; }
+.hov-more { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+@media (hover: hover) {
+  .card:hover .hov, .card:focus-visible .hov { opacity: 1; transform: none; }
+}
+@media (max-width: 560px) { .hov { display: none; } }
+.sources a { color: var(--muted); }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .75; }
+.chip:hover:not([aria-pressed="true"]) { border-color: var(--muted); }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters .chip { padding: 5px 11px; font-size: 13px; }
+.filters .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* section head */
+.sec-head { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; align-items: end; padding-block: 32px 18px; }
+.sec-head h2 { font-family: var(--display); font-weight: 500; font-size: clamp(28px, 4vw, 44px); margin: 0; line-height: 1.05; text-wrap: balance; }
+.sec-head h2 span { font-style: italic; font-weight: 400; color: var(--muted); }
+.sec-head p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+.sec-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap; }
+.notice { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); background: var(--plate); padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; color: var(--muted); }
+.notice b { color: var(--ink); font-weight: 600; }
+
+/* grid */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); padding-bottom: 56px; }
+.card { position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--plate); border-radius: 14px; overflow: hidden; cursor: pointer; border: 1px solid transparent; transition: border-color .2s, transform .25s; text-align: left; padding: 0; }
+.card:hover { border-color: var(--line); transform: translateY(-2px); }
+.plate { position: relative; aspect-ratio: 240 / 260; overflow: hidden; background: radial-gradient(90% 68% at 50% 40%, var(--studio-hi) 0%, var(--studio-mid) 62%, var(--studio-lo) 100%); }
+.plate::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .48 0 0 0 0 .45 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.plate > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.plate .no { position: absolute; top: 12px; left: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+.save { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--plate); display: grid; place-items: center; cursor: pointer; z-index: 2; }
+.save svg { width: 16px; height: 16px; fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.save[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); }
+.save[aria-pressed="true"] svg { stroke: var(--paper); fill: var(--paper); }
+.card-body { padding: 14px 16px 16px; display: grid; gap: 6px; border-top: 1px solid var(--line); }
+.card-body h3 { margin: 0; font-family: var(--display); font-weight: 500; font-size: 21px; line-height: 1.15; text-wrap: balance; }
+.card-body p { margin: 0; color: var(--muted); font-size: 14px; }
+.meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; margin-top: 2px; }
+.lvl { display: inline-flex; gap: 3px; }
+.lvl i { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--muted); }
+.lvl i.on { background: var(--ink); border-color: var(--ink); }
+.empty { grid-column: 1 / -1; padding: 48px 16px; text-align: center; color: var(--muted); }
+
+/* detail */
+dialog { border: 0; padding: 0; background: transparent; color: var(--ink); max-width: min(980px, calc(100vw - 24px)); width: 100%; max-height: calc(100dvh - 24px); }
+dialog::backdrop { background: rgba(10, 12, 11, .55); backdrop-filter: blur(3px); }
+.sheet { position: relative; outline: none; background: var(--paper); border-radius: 18px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); overflow: hidden; max-height: calc(100dvh - 24px); }
+.sheet .plate { aspect-ratio: auto; min-height: 420px; height: 100%; }
+.sheet-body { padding: 28px 28px 22px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; min-width: 0; }
+.sheet-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sheet h2 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.02; margin: 0; text-wrap: balance; }
+.sheet .dir { font-size: 17px; margin: 0; }
+.sheet ol { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; }
+.sheet ol li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: baseline; }
+.sheet ol li::before { content: counter(s); font-family: var(--mono); font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.note { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 4px; }
+.note .k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.note .v { font-family: var(--mono); font-size: 13.5px; line-height: 1.55; }
+.sheet-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+.btn { border: 1px solid var(--line); background: var(--plate); border-radius: 999px; padding: 9px 16px; cursor: pointer; font-size: 14px; display: inline-flex; gap: 8px; align-items: center; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn svg { width: 15px; height: 15px; }
+.x { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--plate); cursor: pointer; display: grid; place-items: center; flex: none; }
+.nav { display: flex; gap: 6px; }
+.close-x { position: absolute; top: 14px; right: 14px; z-index: 3; }
+.sheet-top { padding-right: 48px; min-height: 38px; }
+
+/* shot list drawer */
+.drawer { position: fixed; inset: 0 0 0 auto; width: min(420px, 100vw); background: var(--paper); border-left: 1px solid var(--line); z-index: 40; transform: translateX(100%); transition: transform .3s ease; display: flex; flex-direction: column; padding: calc(env(safe-area-inset-top, 0px) + 20px) 20px calc(env(safe-area-inset-bottom, 0px) + 20px); }
+.drawer.open { transform: none; box-shadow: -20px 0 60px rgba(20, 18, 16, .18); }
+.drawer h2 { font-family: var(--display); font-weight: 500; font-size: 32px; margin: 0; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; }
+.drawer p.sub { margin: 0 0 16px; color: var(--muted); font-size: 14px; }
+.shots { flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; align-content: start; }
+.shot { background: var(--plate); border-radius: 10px; overflow: hidden; border: 1px solid var(--line); cursor: pointer; padding: 0; text-align: left; }
+.shot .plate { aspect-ratio: 240/260; }
+.shot span { display: block; padding: 6px 8px 8px; font-size: 12px; line-height: 1.25; }
+.shot small { display: block; font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.drawer-actions { display: flex; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line); margin-top: 14px; flex-wrap: wrap; }
+.drawer-empty { grid-column: 1 / -1; color: var(--muted); font-size: 14px; padding: 24px 0; }
+.scrim { position: fixed; inset: 0; background: rgba(10, 12, 11, .4); z-index: 39; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translate(-50%, 20px); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 999px; font-size: 14px; opacity: 0; transition: .25s; z-index: 60; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 13px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+footer b { display: block; font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+
+/* svg classes */
+.shd { fill: var(--shadow); }
+.pr1 { fill: var(--prop1); }
+.pr2 { fill: var(--prop2); }
+.pr3 { fill: var(--prop3); }
+.win { fill: var(--win); }
+.wood { fill: #A38D74; }
+.duvet { fill: #F6F4F0; }
+.pillow { fill: #FCFBF9; stroke: #E2DED7; stroke-width: .6; }
+.uph { fill: #CFC7BB; }
+.uph2 { fill: #C2B9AC; }
+.opening { fill: #E2DFD9; }
+.curtain { fill: #F5F2EC; opacity: .92; }
+.fold { stroke: #DDD6CC; stroke-width: 1; fill: none; }
+.winf { stroke: var(--winf); stroke-width: 3; fill: none; }
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sheet { grid-template-columns: 1fr; overflow-y: auto; }
+  .sheet .plate { min-height: 0; height: 46dvh; aspect-ratio: auto; }
+  .sheet-body { padding: 20px 20px 18px; }
+  .sheet-body { overflow: visible; }
+  footer { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .mast { grid-template-columns: 1fr; padding-block: 24px 16px; }
+  .step { grid-template-columns: 1fr; gap: 6px; }
+  .rail-inner { gap: 10px; }
+  .who button { padding-right: 12px; }
+  .scen, .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+  .scen::-webkit-scrollbar, .filters::-webkit-scrollbar { display: none; }
+  .chip { flex: none; }
+  .sec-head { grid-template-columns: 1fr; }
+  .sec-meta { text-align: left; }
+  .card-body { padding: 10px 12px 12px; }
+  .card-body h3 { font-size: 17px; }
+  .card-body p { font-size: 13px; }
+  .grid { gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+@media print {
+  .rail, .mast-tools, .save, footer, .drawer, .scrim { display: none !important; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
+  .card { break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+<header class="wrap mast">
+  <div class="brand">
+    <span class="eyebrow">A field guide for the other side of the lens</span>
+    <h1>The Pose <em>Atlas</em></h1>
+    <p class="lede">Pick who is in front of the camera and the kind of shoot. Browse faceless reference figures, save the poses you like and bring the list to your session.</p>
+  </div>
+  <div class="mast-tools">
+    <button class="icon-btn" id="open-list" type="button" aria-controls="drawer"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 2.5h8v11l-4-2.8-4 2.8z" stroke-linejoin="round"/></svg>Shot list <span class="count" id="count">0</span></button>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Choose poses">
+  <div class="wrap rail-inner">
+    <div class="step"><span class="step-label">In front of the lens</span><div class="who" id="who" role="group" aria-label="Who is posing"></div></div>
+    <div class="step"><span class="step-label">Scenario</span><div class="scen" id="scen" role="group" aria-label="Scenario"></div></div>
+    <div class="step"><span class="step-label">Position</span><div class="filters" id="filters" role="group" aria-label="Filter by position"></div></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="sec-head">
+    <div><h2 id="sec-title">Street Fashion</h2><p id="sec-blurb"></p></div>
+    <div class="sec-meta" id="sec-meta"></div>
+  </div>
+  <div class="notice" id="notice" hidden>
+    <span>Before a nude session, <b>agree on boundaries in writing</b>: what will be shown, who is on set, where the images go. A closed set and a robe between setups make everyone more comfortable.</span>
+  </div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+</main>
+
+<footer class="wrap">
+  <div><b>How to use it</b>Save 8 to 12 poses before the shoot. Show the figure to your subject rather than describing it: people copy shapes faster than instructions.</div>
+  <div><b>Reading the figures</b>Hover a pose to see what to emphasise, the idea behind it and the feeling it should give. Darker limbs sit behind the body. Use Mirror when your light comes from the other side.</div>
+  <div><b>The library</b><span id="total">0</span> poses across 11 collections, chosen from the poses working photographers rely on. Every figure is drawn in code and has no face, by design.</div>
+  <p class="sources">Poses compiled from working photographers' guides: <a href="https://www.koby.photography/blog/70-lifestyle-photography-poses-prompts-ideas-for-dating-app-profile-photos-with-examples" target="_blank" rel="noopener">Koby Photography</a>, <a href="https://www.lancereis.com/photography-tips-for-beginners/27-posing-ideas-for-men-who-arent-models" target="_blank" rel="noopener">Lance Reis</a>, <a href="https://www.jasminealley.com/couple-poses/" target="_blank" rel="noopener">Jasmine Alley</a>, <a href="https://brypenney.com/20-standing-pose-ideas-for-female-personal-branding-shoots/" target="_blank" rel="noopener">Bry Penney</a> and <a href="https://photographylife.com/model-poses-photographers-need-to-know" target="_blank" rel="noopener">Photography Life</a>.</p>
+</footer>
+
+<dialog id="detail" aria-label="Pose details"></dialog>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Shot list">
+  <div class="drawer-head"><h2>Shot list</h2><button class="x" id="drawer-close" type="button" aria-label="Close shot list">✕</button></div>
+  <p class="sub">Your saved poses, in the order you picked them.</p>
+  <div class="shots" id="shots"></div>
+  <div class="drawer-actions"><button class="btn primary" id="copy-list" type="button">Copy as text</button><button class="btn" id="clear-list" type="button">Clear list</button></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* Pose Atlas figure engine v2: faceless parametric mannequins rendered to SVG.
+   Limb angles: 0 = pointing down, +90 = screen right, -90 = screen left, 180 = up.
+   Spine and head: 0 = upright, positive = top leans to screen right.
+   Faces: f front, b back, r/l profile facing right/left, fr/fl three-quarter, br/bl back three-quarter. */
+const Fig = (() => {
+  const R = Math.PI / 180;
+  const dir = a => [Math.sin(a * R), Math.cos(a * R)];
+  const upv = s => [Math.sin(s * R), -Math.cos(s * R)];
+  const prp = s => [Math.cos(s * R), Math.sin(s * R)];
+  const add = (p, v, k = 1) => [p[0] + v[0] * k, p[1] + v[1] * k];
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1]];
+  const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+  const len = v => Math.hypot(v[0], v[1]);
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1];
+  const angTo = (a, b) => Math.atan2(b[0] - a[0], b[1] - a[1]) / R;
+  const norm = a => { a = ((a + 180) % 360 + 360) % 360 - 180; return a; };
+  const f1 = n => Math.round(n * 10) / 10;
+  const pt = p => f1(p[0]) + ',' + f1(p[1]);
+  let UID = 0, GID = 0, DEFS = [];
+  const LIGHT = [-0.6, -0.8];
+
+  const BODY = {
+    w: { ab: 23, ch: 29, neck: 8.5, hrx: 9, hry: 11.2, sw: 15, cw: 12.5, ww: 9.4, hw: 15.5,
+      ua: 28, fa: 25, th: 47, sh: 45, ft: 11,
+      rUA: [4.3, 3.2], rFA: [3.2, 2.3], rTH: [7.6, 4.9], rSH: [4.9, 3.0], rNk: 3.4, rFt: 2.9, hand: [2.9, 4.5] },
+    m: { ab: 24, ch: 32, neck: 9, hrx: 9.5, hry: 11.8, sw: 20, cw: 16.5, ww: 13.5, hw: 14,
+      ua: 31, fa: 28, th: 49, sh: 47, ft: 13,
+      rUA: [5.4, 4.1], rFA: [4.2, 3.0], rTH: [8.0, 5.6], rSH: [5.6, 3.6], rNk: 4.6, rFt: 3.4, hand: [3.6, 5.4] }
+  };
+  const WF = { f: 1, b: 1, fr: 0.76, fl: 0.76, br: 0.76, bl: 0.76, r: 0.5, l: 0.5 };
+  const FS = { f: 0, b: 0, fr: 1, fl: -1, br: 1, bl: -1, r: 1, l: -1 };
+
+  const SKIN_W = '#CDB7A3', SKIN_M = '#B59D88';
+  const HAIR = '#37302B';
+  const shade = (hex, k) => {
+    const n = parseInt(hex.slice(1), 16);
+    const c = [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.max(0, Math.min(255, Math.round(v * k))));
+    return '#' + c.map(v => v.toString(16).padStart(2, '0')).join('');
+  };
+  const lum = h => { const n = parseInt(h.slice(1), 16); return ((n >> 16) * 0.3 + ((n >> 8) & 255) * 0.59 + (n & 255) * 0.11) / 255; };
+
+  function capsule(p1, r1, p2, r2) {
+    const v = sub(p2, p1); const L = len(v) || 0.001; const u = [v[0] / L, v[1] / L];
+    const n = [-u[1], u[0]];
+    const a = add(p1, n, r1), b = add(p2, n, r2), c = add(p2, n, -r2), d = add(p1, n, -r1);
+    return `M${pt(a)}L${pt(b)}A${f1(r2)} ${f1(r2)} 0 0 0 ${pt(c)}L${pt(d)}A${f1(r1)} ${f1(r1)} 0 0 0 ${pt(a)}Z`;
+  }
+  // Organic limb: widths sampled along the bone, calf/biceps bulge on the anatomical side.
+  function organic(p1, p2, r0, prof, bs) {
+    const v = sub(p2, p1); const L = len(v) || 0.001; const u = [v[0] / L, v[1] / L];
+    const n = [-u[1], u[0]];
+    const A = [], Bs = [];
+    prof.forEach(([t, fw, bw]) => {
+      let wa, wb;
+      if (bs > 0) { wa = bw; wb = fw; } else if (bs < 0) { wa = fw; wb = bw; } else { wa = wb = (fw + bw) / 2; }
+      const c = add(p1, u, L * t);
+      A.push(add(c, n, wa * r0)); Bs.push(add(c, n, -wb * r0));
+    });
+    const e = prof[prof.length - 1], st = prof[0];
+    const rE = r0 * (e[1] + e[2]) / 2, rS = r0 * (st[1] + st[2]) / 2;
+    const cap = (c, r, k) => [add(add(c, u, k * r * 0.72), n, r * 0.7), add(c, u, k * r), add(add(c, u, k * r * 0.72), n, -r * 0.7)];
+    const endCap = cap(p2, rE, 1), startCap = cap(p1, rS, -1).reverse();
+    return smooth([...A, ...endCap, ...Bs.reverse(), ...startCap]);
+  }
+  const PROF = {
+    th: [[0, 1, 1], [0.18, 1.03, 1.0], [0.45, 0.93, 0.88], [0.75, 0.76, 0.72], [1, 0.65, 0.65]],
+    sh: [[0, 1, 1], [0.22, 1.0, 1.12], [0.5, 0.86, 0.82], [0.8, 0.66, 0.64], [1, 0.62, 0.62]],
+    ua: [[0, 1.02, 1.02], [0.22, 1.05, 1.0], [0.55, 0.9, 0.88], [0.85, 0.78, 0.78], [1, 0.76, 0.76]],
+    fa: [[0, 1, 1], [0.2, 1.08, 1.02], [0.55, 0.9, 0.88], [0.9, 0.74, 0.74], [1, 0.72, 0.72]]
+  };
+  function footPath(A, T, r, soleSign) {
+    const v = sub(T, A); const L = len(v) || 0.001; const u = [v[0] / L, v[1] / L];
+    const n = [-u[1], u[0]]; const so = [n[0] * soleSign, n[1] * soleSign];
+    const P = (a, b) => add(add(A, u, a), so, b);
+    return smooth([P(r * 0.4, -r * 1.0), P(L * 0.42, -r * 0.8), add(add(T, so, -r * 0.15), u, -r * 0.2), add(add(T, u, r * 0.55), so, r * 0.55), P(L * 0.72, r * 1.2), P(-r * 0.5, r * 1.5), P(-r * 1.45, r * 0.9), P(-r * 1.1, -r * 0.2)]);
+  }
+  const HAND = 'M-2.3,-0.6C-2.9,1.8 -3,4.6 -2.4,6.8C-1.8,8.9 1.4,9.2 2.2,7.2C2.8,5.4 2.9,2.6 2.4,-0.6ZM1.8,0.9C3.8,1.5 4.6,3.3 4.1,4.5C3.6,5.3 2.6,4.7 2.3,3.7Z';
+  function headD(rx, ry, prof) {
+    if (!prof) return `M0,${-ry}C${f1(rx * 1.1)},${-ry} ${f1(rx * 1.06)},${f1(ry * 0.2)} ${f1(rx * 0.64)},${f1(ry * 0.72)}C${f1(rx * 0.4)},${f1(ry * 1.02)} ${f1(-rx * 0.4)},${f1(ry * 1.02)} ${f1(-rx * 0.64)},${f1(ry * 0.72)}C${f1(-rx * 1.06)},${f1(ry * 0.2)} ${f1(-rx * 1.1)},${-ry} 0,${-ry}Z`;
+    return `M1,${-ry}C${f1(rx * 0.95)},${-ry} ${f1(rx * 1.06)},${f1(-ry * 0.3)} ${f1(rx * 0.96)},${f1(ry * 0.22)}C${f1(rx * 0.92)},${f1(ry * 0.68)} ${f1(rx * 0.6)},${f1(ry * 1.0)} ${f1(rx * 0.12)},${f1(ry * 0.96)}C${f1(-rx * 0.5)},${f1(ry * 0.9)} ${f1(-rx * 0.78)},${f1(ry * 0.5)} ${f1(-rx * 1.04)},0C${f1(-rx * 1.12)},${f1(-ry * 0.6)} ${f1(-rx * 0.5)},${-ry} 1,${-ry}Z`;
+  }
+  function smooth(pts, closed = true) {
+    const n = pts.length; let d = 'M' + pt(pts[0]);
+    const g = i => pts[closed ? (i + n) % n : Math.max(0, Math.min(n - 1, i))];
+    const lim = closed ? n : n - 1;
+    for (let i = 0; i < lim; i++) {
+      const p0 = g(i - 1), p1 = g(i), p2 = g(i + 1), p3 = g(i + 2);
+      const c1 = add(p1, sub(p2, p0), 1 / 6), c2 = add(p2, sub(p3, p1), -1 / 6);
+      d += 'C' + pt(c1) + ' ' + pt(c2) + ' ' + pt(p2);
+    }
+    return d + (closed ? 'Z' : '');
+  }
+
+  const O = (top, bot, shoe, extra = {}) => Object.assign({ top, sleeve: top, fore: top, bot, shoe }, extra);
+  const OUTFITS = {
+    nude: {},
+    // women, street
+    w_turtle: O('#262627', '#D6CFC4', '#1C1C1C'),
+    w_coat: O('#A8845E', '#262627', '#1C1C1C', { coat: 0.8 }),
+    w_denim: O('#EEEAE3', '#7F8E9B', '#F1EEE8', { fore: null }),
+    w_leather: O('#232324', '#C8BBA8', '#1C1C1C', { skirt: 1.35, flare: 5 }),
+    w_trench: O('#C9B597', '#EDE8E0', '#2A2A2A', { coat: 1.25, flare: 6 }),
+    // men, street
+    m_coat: O('#A8845E', '#2C3035', '#1C1C1C', { coat: 0.72 }),
+    m_tee: O('#262627', '#8A8374', '#EFECE6', { fore: null }),
+    m_shirt: O('#ECE8E1', '#33404D', '#1C1C1C'),
+    m_denim: O('#5F7182', '#262627', '#EFECE6'),
+    // business
+    w_suit: O('#36383B', '#36383B', '#1B1B1B'),
+    w_ivory: O('#E8E2D8', '#262627', '#1B1B1B'),
+    w_blouse: O('#EDE9E2', '#3A4552', '#1B1B1B', { skirt: 1.4, flare: 2 }),
+    m_suit: O('#2E3845', '#2E3845', '#1B1B1B'),
+    m_charcoal: O('#3A3C3F', '#3A3C3F', '#1B1B1B'),
+    m_knit: O('#7C7563', '#2C3035', '#1B1B1B'),
+    // maternity
+    mat_ivory: O('#E8E0D4', '#E8E0D4', '#E8E0D4', { dress: 1.9, flare: 10, sleeve: null, fore: null }),
+    mat_sage: O('#A6B0A8', '#A6B0A8', '#A6B0A8', { dress: 1.92, flare: 14, sleeve: null, fore: null }),
+    mat_blush: O('#D8C2B6', '#D8C2B6', '#D8C2B6', { dress: 1.9, flare: 12, sleeve: null, fore: null }),
+    mat_bare: O('#E8E0D4', '#E8E0D4', null, { bare: true, bra: true, sleeve: null, fore: null, low: true }),
+    mat_wrap: O('#F4F1EC', '#F4F1EC', null, { bare: true, bra: true, sleeve: null, fore: null, low: true }),
+    mat_lace: O('#EFEAE3', '#EFEAE3', '#EFEAE3', { dress: 1.95, flare: 12 }),
+    mat_black: O('#262627', '#262627', null, { bare: true, bra: true, sleeve: null, fore: null, low: true }),
+    wrap: O('#F4F1EC', null, null, { bare: true, bra: true, sleeve: null, fore: null }),
+    mat_shirt: O('#F1EDE6', null, null, { coat: 0.5, open: true }),
+    mat_jeans: O('#E8E0D4', '#7F8E9B', null, { bare: true, bra: true, sleeve: null, fore: null, low: true }),
+    // partners and couples
+    p_linen: O('#E8E3DA', '#6B665B', '#1E1E1E'),
+    p_dark: O('#2C3035', '#2C3035', '#1B1B1B'),
+    p_navy: O('#33404D', '#8A8374', '#1E1E1E'),
+    p_bare: O('#6B665B', '#6B665B', null, { bare: true, sleeve: null, fore: null }),
+    c_ivory: O('#E9E2D7', '#E9E2D7', '#D9CEBF', { dress: 1.6, flare: 8, sleeve: null, fore: null }),
+    c_sage: O('#8F9B94', '#8F9B94', '#1E1E1E', { dress: 1.25, flare: 7, sleeve: null, fore: null }),
+    c_black: O('#262627', '#262627', '#1E1E1E', { dress: 1.3, flare: 6, sleeve: null, fore: null })
+  };
+
+  function limbPoint(a, b, c, h) { return h <= 1 ? mix(a, b, h) : mix(b, c, Math.min(1, h - 1)); }
+
+  function solveBody(f) {
+    const B = BODY[f.g], wf = WF[f.face || 'f'], fs = FS[f.face || 'f'];
+    const [s0, s1] = f.sp || [0, 0];
+    const hd = f.hd != null ? f.hd : s1;
+    const J = { B, wf, fs, s0, s1, hd, f };
+    J.P = [0, 0];
+    const tk = f.tk || 1;
+    J.W = add(J.P, upv(s0), B.ab * tk);
+    J.N = add(J.W, upv(s1), B.ch * tk);
+    J.Ht = add(J.N, upv(hd), B.neck);
+    J.Hc = add(J.Ht, upv(hd), B.hry * 0.82);
+    J.Top = add(J.Hc, upv(hd), B.hry);
+    const sb = add(J.N, upv(s1), -4.5);
+    const sj = (B.sw - B.rUA[0] + 0.5) * wf;
+    J.SR = add(sb, prp(s1), sj); J.SL = add(sb, prp(s1), -sj);
+    const hj = (B.hw - B.rTH[0] + 1) * wf;
+    J.HJR = add(J.P, prp(s0), hj); J.HJL = add(J.P, prp(s0), -hj);
+    const g = f.g, preg = !!f.preg;
+    const bust = g === 'w' ? 3.2 : 0.5, butt = g === 'w' ? 2.8 : 1;
+    const side = s => {
+      const facing = fs === 0 ? 0 : (s === fs ? 1 : -1);
+      const q0 = prp(s0), q1 = prp(s1), qm = prp((s0 + s1) / 2);
+      const shoulder = add(add(sb, q1, s * B.sw * wf), upv(s1), 1.2);
+      const chest = add(add(J.N, upv(s1), -12), q1, s * (B.cw * wf + (facing === 1 ? bust : facing === -1 ? 0.5 : 0)));
+      const wv = B.ww * wf + (preg && fs === 0 ? 3 : 0) + (preg && facing === 1 ? 7 : 0) + (facing === -1 && g === 'w' ? -0.8 : 0);
+      const waist = add(J.W, qm, s * wv);
+      const hip = add(add(J.P, upv(s0), 3), q0, s * (B.hw * wf + (facing === -1 ? butt : 0)));
+      const pts = { shoulder, chest, waist, hip };
+      if (preg && facing === 1) pts.belly = [add(mix(J.W, J.P, 0.42), q0, s * (B.ww * wf + 18.5)), add(mix(J.W, J.P, 0.78), q0, s * (B.ww * wf + 14))];
+      if (preg && fs === 0) pts.belly = [add(mix(J.W, J.P, 0.5), q0, s * (B.ww + 4.5))];
+      return pts;
+    };
+    const Rs = side(1), Ls = side(-1);
+    J.Cr = add(J.P, upv(s0), -7.5);
+    J.neckL = add(add(J.N, prp(s1), -B.rNk * 1.2), upv(s1), 1.5);
+    J.neckR = add(add(J.N, prp(s1), B.rNk * 1.2), upv(s1), 1.5);
+    J.Rs = Rs; J.Ls = Ls;
+    J.WR = Rs.waist; J.WL = Ls.waist; J.HR = Rs.hip; J.HL = Ls.hip; J.ChR = Rs.chest; J.ChL = Ls.chest;
+    J.ShR = Rs.shoulder; J.ShL = Ls.shoulder;
+    J.Bel = preg ? (fs === 0 ? mix(J.W, J.P, 0.5) : (fs > 0 ? Rs.belly[0] : Ls.belly[0])) : mix(J.W, J.P, 0.5);
+    J.HeR = add(J.Hc, prp(hd), B.hrx); J.HeL = add(J.Hc, prp(hd), -B.hrx);
+    J.Chin = add(J.Hc, upv(hd), -B.hry * 0.9);
+    J.Back = mix(J.N, J.W, 0.5);
+    J.Nape = add(J.Ht, prp(hd), -fs * B.hrx * 0.5);
+    const leg = (spec, hipJ, sgn) => {
+      const [t, s, fr, kt = 1, ks = 1] = spec;
+      const K = add(hipJ, dir(t), B.th * kt), A = add(K, dir(s), B.sh * ks);
+      let fa, fl = B.ft;
+      if (fr != null) fa = s + fr;
+      else if (fs === 0) { fa = s + sgn * 22; fl = B.ft * 0.55; }
+      else fa = s + (fs > 0 ? 82 : -82);
+      if (fr != null && fs === 0 && Math.abs(fr) < 40) fl = B.ft * 0.6;
+      const T = add(A, dir(fa), fl);
+      return { H: hipJ, K, A, T, t, s };
+    };
+    J.LR = leg(f.rl || [3, 1], J.HJR, 1);
+    J.LL = leg(f.ll || [-3, -1], J.HJL, -1);
+    J.KR = J.LR.K; J.KL = J.LL.K; J.AR = J.LR.A; J.AL = J.LL.A;
+    return J;
+  }
+
+  function fkArm(J, spec, S) {
+    const B = J.B;
+    const E = add(S, dir(spec[0]), B.ua * (spec[2] || 1)), X = add(E, dir(spec[1]), B.fa * (spec[3] || 1));
+    return { S, E, X, ua: spec[0], fa: spec[1], fk: true };
+  }
+  // Two-bone IK. In profile and three-quarter views the elbow always bends the anatomical way:
+  // the forearm folds toward the front of the body.
+  function ikArm(J, S, T, bend, side) {
+    const B = J.B, a = B.ua, b = B.fa;
+    const d = len(sub(T, S));
+    const dc = Math.max(Math.abs(a - b) + 0.5, Math.min(a + b - 0.3, d));
+    const th = angTo(S, T);
+    const al = Math.acos(Math.max(-1, Math.min(1, (a * a + dc * dc - b * b) / (2 * a * dc)))) / R;
+    const sol = [th + al, th - al].map(u => { const E = add(S, dir(u), a); return { E, u, f: angTo(E, T) }; });
+    let pick;
+    if (bend === 'up') pick = sol[0].E[1] < sol[1].E[1] ? sol[0] : sol[1];
+    else if (bend === 'down') pick = sol[0].E[1] > sol[1].E[1] ? sol[0] : sol[1];
+    else if (bend === 'in') pick = side > 0 ? (sol[0].E[0] < sol[1].E[0] ? sol[0] : sol[1]) : (sol[0].E[0] > sol[1].E[0] ? sol[0] : sol[1]);
+    else if (bend === 'out' || J.fs === 0) pick = side > 0 ? (sol[0].E[0] > sol[1].E[0] ? sol[0] : sol[1]) : (sol[0].E[0] < sol[1].E[0] ? sol[0] : sol[1]);
+    else {
+      const ok = s => J.fs * norm(s.f - s.u) >= -2;
+      pick = ok(sol[0]) && !ok(sol[1]) ? sol[0] : ok(sol[1]) && !ok(sol[0]) ? sol[1] : (J.fs * norm(sol[0].f - sol[0].u) > J.fs * norm(sol[1].f - sol[1].u) ? sol[1] : sol[0]);
+      if (!ok(pick)) pick = ok(sol[0]) ? sol[0] : sol[1];
+    }
+    const X = add(pick.E, dir(pick.f), b);
+    return { S, E: pick.E, X, ua: pick.u, fa: pick.f };
+  }
+
+  function shift(J, dx, dy) {
+    const mv = p => { p[0] += dx; p[1] += dy; };
+    const seen = new Set();
+    const walk = o => {
+      if (!o || typeof o !== 'object' || seen.has(o)) return;
+      seen.add(o);
+      if (Array.isArray(o) && o.length === 2 && typeof o[0] === 'number') { mv(o); return; }
+      for (const k in o) { if (k === 'B' || k === 'f') continue; walk(o[k]); }
+    };
+    walk(J);
+  }
+  function bodyPoints(J) {
+    const P = [];
+    const r = J.B;
+    [J.LR, J.LL].forEach(L => { P.push([L.K, r.rTH[1]], [L.A, r.rSH[1]], [L.T, r.rFt]); });
+    ['shoulder', 'chest', 'waist', 'hip'].forEach(k => { P.push([J.Rs[k], 0], [J.Ls[k], 0]); });
+    [J.Rs.belly, J.Ls.belly].forEach(b => b && b.forEach(q => P.push([q, 0])));
+    P.push([J.Cr, 2], [J.Hc, r.hry]);
+    if (J.arms) Object.values(J.arms).forEach(A => A && P.push([A.E, r.rUA[1]], [A.X, r.hand[1]]));
+    return P;
+  }
+
+  function resolveTarget(figs, J, sp) {
+    if (sp.at) return [sp.at[0], sp.at[1]];
+    const tf = figs[sp.f != null ? sp.f : J.i];
+    let T = tf[sp.k];
+    if (!T && tf.arms && /^X[LR]$/.test(sp.k)) { const a = tf.arms[sp.k === 'XL' ? 'la' : 'ra']; T = a && a.X; }
+    if (!T && tf.arms && /^E[LR]$/.test(sp.k)) { const a = tf.arms[sp.k === 'EL' ? 'la' : 'ra']; T = a && a.E; }
+    if (!T) T = tf.P;
+    return add(T, sp.d || [0, 0]);
+  }
+
+  function build(pose) {
+    const figs = pose.fig.map((f, i) => { const J = solveBody(f); J.i = i; return J; });
+    figs.forEach(J => {
+      J.arms = {};
+      [['la', J.SL], ['ra', J.SR]].forEach(([k, S]) => {
+        const sp = J.f[k] || (k === 'la' ? [-7, -4] : [7, 4]);
+        if (Array.isArray(sp)) J.arms[k] = fkArm(J, sp, S);
+      });
+    });
+    figs.forEach(J => {
+      const f = J.f;
+      if (f.y != null) { shift(J, f.x || 0, f.y); return; }
+      let maxY = -1e9;
+      bodyPoints(J).forEach(([p, r]) => { maxY = Math.max(maxY, p[1] + r); });
+      shift(J, f.x || 0, -maxY - (f.up || 0));
+    });
+    // IK passes: two rounds so arms can target arms that are themselves IK
+    for (let round = 0; round < 2; round++) {
+      figs.forEach(J => {
+        [['la', -1], ['ra', 1]].forEach(([k, sd]) => {
+          let sp = J.f[k];
+          if (!sp || Array.isArray(sp)) return;
+          if (typeof sp === 'string') sp = { k: sp };
+          const T = resolveTarget(figs, J, sp);
+          J.arms[k] = ikArm(J, k === 'la' ? J.SL : J.SR, T, sp.b, sd);
+        });
+        J.XL = J.arms.la.X; J.XR = J.arms.ra.X; J.EL = J.arms.la.E; J.ER = J.arms.ra.E;
+      });
+    }
+    return figs;
+  }
+
+  // Anatomy check: in profile and three-quarter views elbows and knees may only bend one way.
+  function check(pose) {
+    const issues = [];
+    let figs; try { figs = build(pose); } catch (e) { return ['build error ' + e.message]; }
+    figs.forEach((J, i) => {
+      if (J.wf !== 0.5) return;
+      ['la', 'ra'].forEach(k => {
+        const A = J.arms[k]; const d = J.fs * norm(A.fa - A.ua);
+        if (d < -12) issues.push(`fig${i} ${k} elbow reversed (${Math.round(d)})`);
+      });
+      [['ll', J.LL], ['rl', J.LR]].forEach(([k, L]) => {
+        const d = J.fs * norm(L.s - L.t);
+        if (d > 12) issues.push(`fig${i} ${k} knee reversed (${Math.round(d)})`);
+      });
+    });
+    return issues;
+  }
+
+  function torsoSeq(J, s) {
+    const { B, wf, fs, s0, s1, f } = J; const g = f.g, preg = !!f.preg;
+    const u1 = upv(s1), u0 = upv(s0), q1 = prp(s1), q0 = prp(s0), qm = prp((s0 + s1) / 2);
+    const at = (b, a, q, w) => add(add(b, a === u1 || a === u0 ? a : a, 0), q, 0) && add(add(b, a[0], a[1]), q, w);
+    const P = (base, uv, du, q, w) => add(add(base, uv, du), q, s * w);
+    const facing = fs === 0 ? 0 : (s === fs ? 1 : -1);
+    const bust = (g === 'w' ? 3.4 : 1.0) * (wf < 0.6 ? 1 : 0.8), butt = g === 'w' ? 3.0 : 1.4;
+    const out = [];
+    if (facing === 0) {
+      out.push({ k: 'neck', p: P(J.N, u1, 2.5, q1, B.rNk * 1.15) });
+      out.push({ k: 'trap', p: P(J.N, u1, -0.8, q1, B.sw * 0.55) });
+      out.push({ k: 'shoulder', p: P(J.N, u1, -3.2, q1, B.sw) });
+      out.push({ k: 'armpit', p: P(J.N, u1, -10, q1, B.cw + 0.3) });
+      out.push({ k: 'rib', p: P(J.N, u1, -19, q1, B.cw - (g === 'w' ? 1.6 : 0.6)) });
+      out.push({ k: 'waist', p: P(J.W, [0, 0], 0, qm, B.ww + (preg ? 3 : 0)) });
+      out.push({ k: 'hip', p: P(J.P, u0, 3, q0, B.hw) });
+      out.push({ k: 'thigh', p: P(J.P, u0, -3.5, q0, B.hw - 1.2) });
+    } else if (facing === 1) {
+      out.push({ k: 'neck', p: P(J.N, u1, 3, q1, B.rNk * 1.1) });
+      out.push({ k: 'chestTop', p: P(J.N, u1, -3, q1, B.cw * wf + 0.8) });
+      out.push({ k: 'bust', p: P(J.N, u1, -11, q1, B.cw * wf + bust) });
+      out.push({ k: 'underBust', p: P(J.N, u1, -16.5, q1, B.cw * wf + bust * 0.3) });
+      if (preg) {
+        out.push({ k: 'waist', p: P(J.W, u1, 5, qm, B.ww * wf + 7) });
+        out.push({ k: 'belly0', p: P(J.W, u0, -3, q0, B.ww * wf + 14.5) });
+        out.push({ k: 'belly', p: P(mix(J.W, J.P, 0.42), [0, 0], 0, q0, B.ww * wf + 18.5) });
+        out.push({ k: 'belly2', p: P(mix(J.W, J.P, 0.78), [0, 0], 0, q0, B.ww * wf + 14) });
+        out.push({ k: 'belly3', p: P(J.P, u0, -3.5, q0, B.ww * wf + 6) });
+      } else {
+        out.push({ k: 'waist', p: P(J.W, [0, 0], 0, qm, B.ww * wf) });
+        out.push({ k: 'belly', p: P(mix(J.W, J.P, 0.55), [0, 0], 0, q0, B.ww * wf + (g === 'm' ? 0.6 : 1.3)) });
+      }
+      if (preg) out.push({ k: 'hip', p: P(J.P, u0, -6.5, q0, B.hw * wf * 0.8) });
+      else {
+        out.push({ k: 'hip', p: P(J.P, u0, 1, q0, B.hw * wf * 0.92) });
+        out.push({ k: 'thigh', p: P(J.P, u0, -4, q0, B.hw * wf * 0.85) });
+      }
+    } else {
+      out.push({ k: 'neck', p: P(J.N, u1, 3.5, q1, B.rNk * 1.25) });
+      out.push({ k: 'upperBack', p: P(J.N, u1, -2.5, q1, B.cw * wf + 1.4) });
+      out.push({ k: 'blade', p: P(J.N, u1, -10, q1, B.cw * wf + 1.0) });
+      out.push({ k: 'waist', p: P(J.W, [0, 0], 0, qm, B.ww * wf - (g === 'w' ? 1.4 : 0.6)) });
+      out.push({ k: 'buttTop', p: P(mix(J.W, J.P, 0.55), [0, 0], 0, q0, B.hw * wf + butt * 0.3) });
+      out.push({ k: 'hip', p: P(J.P, u0, -1, q0, B.hw * wf + butt) });
+      out.push({ k: 'thigh', p: P(J.P, u0, -6, q0, B.hw * wf * 0.85) });
+    }
+    return out;
+  }
+
+  function renderFig(J, parts) {
+    const f = J.f, B = J.B;
+    let o = f.o || 'nude';
+    if (typeof o === 'string') o = OUTFITS[o] || {};
+    o = Object.assign({}, o, f.oo || {});
+    const skin = f.skin || (f.g === 'm' ? SKIN_M : SKIN_W);
+    const C = {
+      top: o.top || skin, sleeve: o.sleeve || skin, fore: o.fore || skin, bot: o.bot || skin,
+      shin: o.shin || o.bot || skin, shoe: o.shoe || skin
+    };
+    const sep = h => shade(h, lum(h) < 0.3 ? 1.4 : 0.9);
+    if (o.top && o.sleeve && C.sleeve === C.top) C.sleeve = sep(C.top);
+    if (o.top && o.fore && C.fore === C.top) C.fore = sep(C.top);
+    const base = J.i * 20;
+    const back = new Set(f.back || []), top = new Set(f.top || []), under = new Set(f.under || []), fo = new Set(f.fo || []), ho = new Set(f.ho || []);
+    const zOf = (k, dz, fore) => under.has(k) ? -40 + J.i + dz * 0.01 : (top.has(k) || (fore && fo.has(k))) ? 100 + J.i * 2 + dz * 0.01 : back.has(k) ? base + dz * 0.01 : base + dz;
+    const dark = k => back.has(k) || under.has(k);
+    const col = (c, k) => dark(k) ? shade(c, 0.84) : c;
+    const P = (z, d, fill, extra = '') => parts.push({ z, fig: true, s: `<path d="${d}" fill="${fill}"${extra}/>` });
+    const cyl = (fill, p1, p2, r) => {
+      const v = sub(p2, p1), L = len(v) || 1, u = [v[0] / L, v[1] / L], n = [-u[1], u[0]];
+      const sg = dot(n, LIGHT) >= 0 ? 1 : -1, m = mix(p1, p2, 0.5);
+      const a = add(m, n, r * sg), b = add(m, n, -r * sg), id = 'g' + (++GID);
+      DEFS.push(`<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${f1(a[0])}" y1="${f1(a[1])}" x2="${f1(b[0])}" y2="${f1(b[1])}"><stop offset="0" stop-color="${shade(fill, 1.12)}"/><stop offset=".38" stop-color="${shade(fill, 1.02)}"/><stop offset=".72" stop-color="${fill}"/><stop offset="1" stop-color="${shade(fill, 0.78)}"/></linearGradient>`);
+      return `url(#${id})`;
+    };
+    const PL = (z, d, fill, ax) => P(z, d, ax ? cyl(fill, ax[0], ax[1], ax[2]) : fill, ` stroke="${shade(fill, 0.86)}" stroke-width="0.4" stroke-linejoin="round"`);
+
+    const bs = J.fs > 0 ? 1 : J.fs < 0 ? -1 : 0;
+    [['rl', J.LR], ['ll', J.LL]].forEach(([k, L]) => {
+      const z = zOf(k, 2);
+      PL(z, organic(L.K, L.A, B.rSH[0], PROF.sh, J.wf === 0.5 ? bs : 0), col(C.shin, k), [L.K, L.A, B.rSH[0]]);
+      PL(z + 0.001, organic(L.H, L.K, B.rTH[0], PROF.th, 0), col(C.bot, k), [L.H, L.K, B.rTH[0]]);
+      const flen = len(sub(L.T, L.A));
+      if (J.fs !== 0 && flen > B.ft * 0.7) PL(z + 0.002, footPath(L.A, L.T, B.rFt, J.fs), col(C.shoe, k));
+      else PL(z + 0.002, capsule(L.A, B.rFt * 1.05, L.T, B.rFt * 0.95), col(C.shoe, k));
+    });
+    const hair = f.hair || (f.g === 'w' ? 'long' : 'short');
+    const hs = hairShapes(hair, f.hf || f.face || 'f');
+    const htf = `transform="translate(${pt(J.Hc)}) rotate(${f1(J.hd)})${hs.flip ? ' scale(-1,1)' : ''}"`;
+    if (hs.back) parts.push({ z: base + 1, fig: true, s: `<path d="${hs.back}" fill="${HAIR}" ${htf}/>` });
+    P(base + 3, capsule(J.N, B.rNk * 1.15, J.Ht, B.rNk), cyl(shade(skin, 0.94), J.N, J.Ht, B.rNk));
+    const Rs = J.Rs, Ls = J.Ls;
+    const RQ = torsoSeq(J, 1), LQ = torsoSeq(J, -1);
+    const outline = [...RQ.map(x => x.p), J.Cr, ...[...LQ].reverse().map(x => x.p)];
+    const topC = o.bare ? skin : C.top;
+    const split = C.bot !== topC;
+    const tq = prp(J.s1), tw = B.sw * J.wf + 2;
+    const tAx = [add(J.Back, tq, -tw), add(J.Back, tq, tw)];
+    const tcyl = c => { const id = 'g' + (++GID); const sg = dot(tq, LIGHT) >= 0 ? 1 : -1; const a = add(J.Back, tq, tw * sg), b = add(J.Back, tq, -tw * sg);
+      DEFS.push(`<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${f1(a[0])}" y1="${f1(a[1])}" x2="${f1(b[0])}" y2="${f1(b[1])}"><stop offset="0" stop-color="${shade(c, 1.1)}"/><stop offset=".45" stop-color="${shade(c, 1.01)}"/><stop offset=".8" stop-color="${c}"/><stop offset="1" stop-color="${shade(c, 0.82)}"/></linearGradient>`); return `url(#${id})`; };
+    P(base + 4, smooth(outline), tcyl(split ? C.bot : topC));
+    if (split) {
+      const k = o.low ? 0.55 : 0.3;
+      const cut = (Q) => {
+        const wi = Q.findIndex(x => x.k === 'waist'); const hi = Q.findIndex(x => x.k === 'hip');
+        const last = Q.findIndex(x => x.k === 'belly3');
+        const upto = last >= 0 ? last : wi;
+        const cp = last >= 0 ? mix(Q[last].p, Q[hi].p, 0.35) : mix(Q[wi].p, Q[hi].p, k);
+        return { pts: Q.slice(0, upto + 1).map(x => x.p), cp };
+      };
+      const r = cut(RQ), l = cut(LQ);
+      P(base + 4.02, smooth([...r.pts, r.cp, mix(r.cp, l.cp, 0.5), l.cp, ...l.pts.reverse()]), tcyl(topC));
+    }
+    if (o.bare && o.bra) {
+      const a = mix(Ls.chest, Ls.shoulder, 0.25), b = mix(Rs.chest, Rs.shoulder, 0.25);
+      const c = add(Rs.chest, sub(Rs.waist, Rs.chest), 0.35), d = add(Ls.chest, sub(Ls.waist, Ls.chest), 0.35);
+      P(base + 4.05, smooth([a, b, c, d]), C.top);
+    }
+    if (o.open) {
+      const q = prp(J.s1), m1 = add(J.N, upv(J.s1), -2), m2 = J.P;
+      const off = J.fs * J.B.cw * J.wf * 0.55;
+      const a = add(m1, q, off - 2.4), b = add(m1, q, off + 2.4), c = add(add(m2, q, off + 6), upv(J.s0), 2), d = add(add(m2, q, off - 6), upv(J.s0), 2);
+      P(base + 4.06, smooth([a, b, c, d]), skin);
+    }
+    if (f.preg && J.fs === 0) {
+      const c = J.Bel, fc = o.bare || !o.top ? skin : C.top;
+      const bid = 'g' + (++GID);
+      DEFS.push(`<radialGradient id="${bid}" cx=".5" cy=".5" r=".55" fx=".4" fy=".36"><stop offset="0" stop-color="${shade(fc, 1.1)}"/><stop offset=".7" stop-color="${shade(fc, 1.0)}"/><stop offset="1" stop-color="${shade(fc, 0.9)}" stop-opacity=".0"/></radialGradient>`);
+      parts.push({ z: base + 4.2, fig: true, s: `<ellipse cx="${f1(c[0])}" cy="${f1(c[1] + 1)}" rx="${B.ww + 4}" ry="${f1(B.ab * 0.72)}" transform="rotate(${f1(J.s0)} ${pt(c)})" fill="url(#${bid})"/>` });
+    }
+    const hemH = o.dress || o.coat || o.skirt;
+    if (hemH) {
+      const d = upv(J.s0).map(v => -v), q = prp(J.s0);
+      const lp = [limbPoint(J.LR.H, J.LR.K, J.LR.A, hemH), limbPoint(J.LL.H, J.LL.K, J.LL.A, hemH)];
+      const pj = lp.map(p => dot(sub(p, J.P), q)), aj = lp.map(p => dot(sub(p, J.P), d));
+      const along = Math.max(aj[0], aj[1]) * 0.55 + Math.min(aj[0], aj[1]) * 0.45;
+      const fl = (o.flare || 3) + B.rTH[1];
+      const hc = add(J.P, d, along);
+      const hL = add(hc, q, Math.min(pj[0], pj[1]) - fl), hR = add(hc, q, Math.max(pj[0], pj[1]) + fl);
+      const segOf = (Q, sg) => {
+        const i0 = o.dress ? Q.findIndex(x => ['underBust', 'rib', 'blade'].includes(x.k)) : Q.findIndex(x => x.k === 'waist');
+        const i1 = Q.findIndex(x => x.k === 'hip');
+        return Q.slice(Math.max(0, i0), i1 + 1).map(x => add(x.p, prp(J.s0), sg * 0.8));
+      };
+      const sR = segOf(RQ, 1), sL = segOf(LQ, -1);
+      const hipR = sR[sR.length - 1], hipL = sL[sL.length - 1];
+      const pts = [...sR, mix(hipR, hR, 0.55), hR, mix(hR, hL, 0.5), hL, mix(hipL, hL, 0.55), ...sL.reverse()];
+      P(base + 4.5, smooth(pts), tcyl(o.coat ? C.top : C.bot));
+    }
+    const hface = f.hf || f.face || 'f';
+    const hprof = ['r', 'l', 'fr', 'fl'].includes(hface);
+    const hflip = hface === 'l' || hface === 'fl';
+    const hid = 'g' + (++GID);
+    DEFS.push(`<radialGradient id="${hid}" cx=".5" cy=".5" r=".62" fx=".34" fy=".3"><stop offset="0" stop-color="${shade(skin, 1.1)}"/><stop offset=".6" stop-color="${skin}"/><stop offset="1" stop-color="${shade(skin, 0.84)}"/></radialGradient>`);
+    parts.push({ z: base + 5, fig: true, s: `<path d="${headD(B.hrx, B.hry, hprof)}" fill="url(#${hid})" transform="translate(${pt(J.Hc)}) rotate(${f1(J.hd)})${hflip ? ' scale(-1,1)' : ''}"/>` });
+    if (hs.cap) parts.push({ z: base + 5.1, fig: true, s: `<path d="${hs.cap}" fill="${HAIR}" ${htf}/>` });
+    if (hs.front) parts.push({ z: base + 5.2, fig: true, s: `<path d="${hs.front}" fill="${HAIR}" ${htf}/>` });
+    [['la', J.arms.la], ['ra', J.arms.ra]].forEach(([k, A]) => {
+      const zu = zOf(k, 6, false), zf = zOf(k, 6, true);
+      PL(zf, organic(A.E, A.X, B.rFA[0], PROF.fa, 0), col(C.fore, k), [A.E, A.X, B.rFA[0]]);
+      PL(zu + 0.001, organic(A.S, A.E, B.rUA[0], PROF.ua, 0), col(C.sleeve, k), [A.S, A.E, B.rUA[0]]);
+      if (zf !== zu) PL(zf + 0.0005, capsule(A.E, B.rFA[0] + 0.4, add(A.E, dir(A.fa), 3), B.rFA[0]), col(C.fore, k));
+      const hs2 = f.g === 'm' ? 1.18 : 1;
+      const ts = J.fs === 0 ? (k === 'la' ? 1 : -1) : J.fs;
+      const hc = add(A.X, dir(A.fa), -0.5);
+      const hcol = col(skin, k);
+      parts.push({ z: ho.has(k) ? 100 + J.i * 2 + 0.07 : zf + 0.002, fig: true, s: `<path d="${HAND}" transform="translate(${pt(hc)}) rotate(${f1(-A.fa)}) scale(${f1(ts * hs2 * 100) / 100},${hs2})" fill="${hcol}" stroke="${shade(hcol, 0.8)}" stroke-width="0.5" stroke-linejoin="round"/>` });
+    });
+  }
+
+  function hairShapes(type, face) {
+    const prof = face === 'r' || face === 'l' || face === 'fr' || face === 'fl';
+    const back = face === 'b' || face === 'bl' || face === 'br';
+    const flip = face === 'l' || face === 'fl' || face === 'br';
+    const S = {};
+    if (back) {
+      S.cap = 'M-10.2,2C-11,-9 -6,-13.4 0,-13.4C6,-13.4 11,-9 10.2,2C8,9 -8,9 -10.2,2Z';
+      if (type === 'long') { S.back = 'M-11,-3C-12,-14 -6,-15 0,-15C6,-15 12,-14 11,-3L12,22C6,25 -6,25 -12,22Z'; S.cap = 'M-10.4,4C-11.4,-10 -6,-13.6 0,-13.6C6,-13.6 11.4,-10 10.4,4C9,12 -9,12 -10.4,4Z'; }
+      if (type === 'bun') S.back = 'M0,-19.5a5.8,5.8 0 1,0 0.01,0Z';
+      if (type === 'pony') S.back = 'M-2.5,-6C-5,4 -4,14 0,22C4,14 5,4 2.5,-6Z';
+      if (type === 'short') S.cap = 'M-10.2,1C-11,-9 -6,-13.3 0,-13.3C6,-13.3 11,-9 10.2,1C8,5 -8,5 -10.2,1Z';
+      return S;
+    }
+    if (!prof) {
+      if (type === 'long') {
+        S.back = 'M-11.2,-2C-12.4,-14 -6,-15.3 0,-15.3C6,-15.3 12.4,-14 11.2,-2L12.8,19C7,22.5 -7,22.5 -12.8,19Z';
+        S.cap = 'M-10,-0.5C-10.8,-10 -6,-13.7 0,-13.7C6,-13.7 10.8,-10 10,-0.5C7.5,-7.5 -7.5,-7.5 -10,-0.5Z';
+      } else if (type === 'bun' || type === 'pony') {
+        if (type === 'bun') S.back = 'M0,-20a5.6,5.6 0 1,0 0.01,0Z';
+        S.cap = 'M-9.8,-1.5C-10.6,-10 -6,-13.5 0,-13.5C6,-13.5 10.6,-10 9.8,-1.5C7.5,-8 -7.5,-8 -9.8,-1.5Z';
+      } else {
+        S.cap = 'M-10.3,-1C-10.8,-11 -6,-14.4 0,-14.4C6,-14.4 10.8,-11 10.3,-1C8,-7.8 -8,-7.8 -10.3,-1Z';
+      }
+      return S;
+    }
+    S.flip = flip;
+    if (type === 'long') {
+      S.back = 'M6,-12C1,-16 -10,-15 -11.5,-4C-12.5,6 -11,14 -12.5,21C-8,23 -4,22 -1.5,20C-4,11 -3.5,3 -1,-3C2,-7 6,-8 9.5,-6Z';
+      S.cap = 'M9.6,-4C9,-13 -1,-15.5 -7.5,-11C-11,-7 -10.8,1 -9.5,6C-6,0 -1,-6.5 9.6,-4Z';
+    } else if (type === 'bun') {
+      S.back = 'M-9,-15a5.6,5.6 0 1,0 0.01,0Z';
+      S.cap = 'M9.4,-4.5C9,-13 -1,-15.5 -7.5,-11C-11,-7 -10.5,0 -9.3,4.5C-6,-1 -1,-6.5 9.4,-4.5Z';
+    } else if (type === 'pony') {
+      S.back = 'M-8,-10C-14,-9 -17,-2 -16,10C-15,15 -13,19 -12,22C-11,15 -10,7 -6,-4Z';
+      S.cap = 'M9.4,-4.5C9,-13 -1,-15.5 -7.5,-11C-11,-7 -10.5,0 -9.3,4.5C-6,-1 -1,-6.5 9.4,-4.5Z';
+    } else {
+      S.cap = 'M9.2,-5.5C8.5,-13.5 -2,-15.5 -8,-10.5C-11,-7 -10.7,-1 -9.8,2.5C-6.5,-2.5 0,-7.5 9.2,-5.5Z';
+    }
+    return S;
+  }
+
+  // Props. Coordinates: x in composition space, y = 0 is the floor, negative is up.
+  function propParts(pose, figs, bb, parts, ext) {
+    (pose.props || []).forEach(pr => {
+      const J = figs[pr.f || 0];
+      const Z = -60;
+      const add2 = (s, z = Z) => parts.push({ z, s });
+      const grow = (a, b) => { ext.min = Math.min(ext.min, a); ext.max = Math.max(ext.max, b); };
+      const seatY = () => J.P[1] + J.B.rTH[0] - 1 + (pr.dy || 0);
+      const cxOf = () => (pr.cx != null ? pr.cx : J.P[0]) + (pr.dx || 0);
+      if (pr.p === 'cube' || pr.p === 'stool' || pr.p === 'chair' || pr.p === 'bench' || pr.p === 'chairback') {
+        const y = seatY(), cx = cxOf();
+        const w = pr.w || (pr.p === 'bench' ? 120 : pr.p === 'cube' ? 44 : 34);
+        grow(cx - w / 2, cx + w / 2);
+        if (pr.p === 'cube') add2(`<rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="${f1(-y)}" rx="1.5" class="pr1"/><rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="2.5" rx="1" class="pr3"/>`);
+        else {
+          add2(`<rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="4" rx="2" class="pr2"/>`);
+          [cx - w / 2 + 4, cx + w / 2 - 4].forEach(x => add2(`<rect x="${f1(x - 1.3)}" y="${f1(y + 3)}" width="2.6" height="${f1(-y - 3)}" class="pr2"/>`));
+          if (pr.p === 'bench' && pr.back) add2(`<rect x="${f1(cx - w / 2)}" y="${f1(y - 40)}" width="${w}" height="4" rx="2" class="pr2"/><rect x="${f1(cx - w / 2)}" y="${f1(y - 28)}" width="${w}" height="4" rx="2" class="pr2"/><rect x="${f1(cx - w / 2 + 4 - 1.3)}" y="${f1(y - 40)}" width="2.6" height="40" class="pr2"/><rect x="${f1(cx + w / 2 - 4 - 1.3)}" y="${f1(y - 40)}" width="2.6" height="40" class="pr2"/>`, -61);
+          if (pr.p === 'chair' || pr.p === 'chairback') {
+            const bx = pr.bo != null ? cx + (pr.side === 'r' ? pr.bo : -pr.bo) : pr.side === 'r' ? cx + w / 2 - 3 : cx - w / 2 + 0.4;
+            const h = pr.h || 46;
+            const tw = pr.p === 'chairback' ? 5 : 2.8;
+            const svgBack = `<rect x="${f1(bx)}" y="${f1(y - h)}" width="${tw}" height="${h + 2}" rx="1.4" class="pr2"/><rect x="${f1(bx - 3)}" y="${f1(y - h)}" width="${f1(tw + 6)}" height="3.5" rx="1.5" class="pr2"/>`;
+            add2(svgBack, pr.p === 'chairback' ? (pr.f || 0) * 20 + 1.5 : Z);
+          }
+        }
+      }
+      if (pr.p === 'wall') {
+        const x = pr.x != null ? pr.x : pr.side === 'r' ? bb.maxX + (pr.gap || 0) : bb.minX - 16 - (pr.gap || 0);
+        add2(`<rect x="${f1(x)}" y="-215" width="16" height="215" class="pr1"/><rect x="${f1(pr.side === 'r' ? x : x + 14)}" y="-215" width="2" height="215" class="pr3"/>`);
+        grow(x, x + 16);
+      }
+      if (pr.p === 'step') {
+        const L = pr.leg === 'll' ? J.LL : J.LR;
+        const y = Math.max(L.A[1], L.T[1]) + J.B.rFt - 0.5;
+        const cx = (L.A[0] + L.T[0]) / 2 + (pr.dx || 0), w = pr.w || 46;
+        add2(`<rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="${f1(-y)}" rx="1" class="pr1"/><rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="2" class="pr3"/>`);
+        grow(cx - w / 2, cx + w / 2);
+      }
+      if (pr.p === 'stairs') {
+        // seat step under the pelvis, lower steps descend toward the facing side, one higher step behind
+        const y = seatY(), cx = cxOf(), sd = pr.side === 'l' ? -1 : 1, n = pr.n || 2, rise = -y / n, run = pr.run || 26;
+        let d = `M${f1(cx - sd * (run * 1.6))},0`;
+        d += `V${f1(y - rise)}H${f1(cx - sd * run * 0.6)}V${f1(y)}`;
+        for (let i = 0; i < n; i++) { const x = cx + sd * (run * 0.4 + i * run); d += `H${f1(x)}V${f1(y + rise * (i + 1))}`; }
+        d += 'Z';
+        add2(`<path d="${d}" class="pr1"/>`);
+        const xs = [cx - sd * run * 1.6, cx + sd * (run * 0.4 + (n - 1) * run)];
+        grow(Math.min(...xs), Math.max(...xs));
+      }
+      if (pr.p === 'rail') {
+        const h = pr.h || 92, x1 = pr.x1 != null ? pr.x1 : bb.minX - 20, x2 = pr.x2 != null ? pr.x2 : bb.maxX + 20;
+        let s = `<rect x="${f1(x1)}" y="${-h}" width="${f1(x2 - x1)}" height="3.4" rx="1.7" class="pr2"/>`;
+        for (let x = x1 + 6; x < x2; x += 26) s += `<rect x="${f1(x)}" y="${-h}" width="2.2" height="${h}" class="pr2"/>`;
+        add2(s, pr.front ? 90 : Z);
+        grow(x1, x2);
+      }
+      if (pr.p === 'post') {
+        const x = pr.x != null ? pr.x : pr.side === 'r' ? bb.maxX + 3 : bb.minX - 7;
+        add2(`<rect x="${f1(x - 2)}" y="-228" width="4" height="228" rx="2" class="pr2"/><rect x="${f1(x - 6)}" y="-5" width="12" height="5" rx="1" class="pr2"/>`, pr.front ? 90 : Z);
+        grow(x - 6, x + 6);
+      }
+      if (pr.p === 'desk') {
+        const h = pr.h || 74, w = pr.w || 80, x = pr.x || 0;
+        add2(`<rect x="${f1(x - w / 2 + 4)}" y="${-h + 3}" width="3" height="${h - 3}" class="pr2"/><rect x="${f1(x + w / 2 - 7)}" y="${-h + 3}" width="3" height="${h - 3}" class="pr2"/>${pr.front ? `<rect x="${f1(x - w / 2 + 2)}" y="${-h + 3}" width="${w - 4}" height="${f1(h * 0.42)}" class="pr1"/>` : ''}<rect x="${f1(x - w / 2)}" y="${-h}" width="${w}" height="4" rx="1" class="pr2"/>`, pr.front ? 90 : Z);
+        grow(x - w / 2, x + w / 2);
+      }
+      if (pr.p === 'window') {
+        const x = pr.x || 0, w = pr.w || 86, h = pr.h || 170, y0 = -(pr.y || 30) - h;
+        let wq = `<rect x="${f1(x - w / 2)}" y="${f1(y0)}" width="${w}" height="${h}" class="win"/><path d="M${f1(x)},${f1(y0)}V${f1(y0 + h)}M${f1(x - w / 2)},${f1(y0 + h * 0.42)}H${f1(x + w / 2)}" class="winf"/><rect x="${f1(x - w / 2)}" y="${f1(y0)}" width="${w}" height="${h}" class="winf" fill="none"/>`;
+        if (pr.curtain) ['l', 'r'].filter(c => pr.curtain === c || pr.curtain === 'both').forEach(c => {
+          const cx0 = c === 'l' ? x - w / 2 - 12 : x + w / 2 - 8, top = y0 - 10, bot = -1;
+          wq += `<path d="M${f1(cx0)},${f1(top)}h20c-3,40 2,90 -2,${f1(bot - top)}h-20c3,-40 -2,-90 2,${f1(-(bot - top))}Z" class="curtain"/><path d="M${f1(cx0 + 7)},${f1(top + 4)}c-1,40 1,90 -1,${f1(bot - top - 6)}M${f1(cx0 + 13)},${f1(top + 4)}c1,40 -1,90 1,${f1(bot - top - 6)}" class="fold"/>`;
+          grow(cx0 - 2, cx0 + 22);
+        });
+        add2(wq, -70);
+        grow(x - w / 2, x + w / 2);
+      }
+      if (pr.p === 'bed') {
+        const x1 = pr.x1 != null ? pr.x1 : bb.minX - 14, x2 = pr.x2 != null ? pr.x2 : bb.maxX + 14, h = pr.h || 0;
+        add2(`<path d="M${f1(x1)},0V${-h - 2}C${f1(x1)},${-h - 7} ${f1(x1 + 6)},${-h - 8} ${f1(x1 + 14)},${-h - 7.5}H${f1(x2 - 14)}C${f1(x2 - 6)},${-h - 8} ${f1(x2)},${-h - 7} ${f1(x2)},${-h - 2}V0Z" class="pr1"/>`, -58);
+        if (pr.pillow) { const px = pr.pillow === 'r' ? x2 - 26 : x1 + 4; add2(`<rect x="${f1(px)}" y="${-h - 15}" width="22" height="9" rx="4.5" class="pr3"/>`, -57); }
+        grow(x1, x2);
+      }
+      if (pr.p === 'bed') {
+        const h = pr.seat ? -seatY() : (pr.h || 24);
+        const x1 = pr.x1 != null ? pr.x1 : bb.minX - 18, x2 = pr.x2 != null ? pr.x2 : bb.maxX + 18;
+        const hl = pr.head !== 'r';
+        let q = `<rect x="${f1(x1)}" y="-9" width="${f1(x2 - x1)}" height="9" rx="1.5" class="wood"/>`;
+        q += `<rect x="${f1(x1 + 1)}" y="${f1(-h)}" width="${f1(x2 - x1 - 2)}" height="${f1(h - 7)}" rx="5" class="pr3"/>`;
+        const dx1 = hl ? x1 + (x2 - x1) * 0.42 : x1 + 1, dx2 = hl ? x2 - 1 : x2 - (x2 - x1) * 0.42;
+        q += `<path d="M${f1(dx1)},${f1(-h + 1)}C${f1(dx1 + 8)},${f1(-h - 3)} ${f1(dx2 - 8)},${f1(-h - 1)} ${f1(dx2)},${f1(-h + 2)}V${f1(-9)}H${f1(dx1)}Z" class="duvet"/>`;
+        const hx = hl ? x1 - 8 : x2;
+        q += `<rect x="${f1(hx)}" y="${f1(-h - 58)}" width="8" height="${f1(h + 58)}" rx="3" class="wood"/>`;
+        if (pr.pillow !== false) { const px = hl ? x1 + 4 : x2 - 34; q += `<rect x="${f1(px)}" y="${f1(-h - 10)}" width="30" height="12" rx="6" class="pillow"/>`; }
+        add2(q, -58); grow(Math.min(x1, hx), Math.max(x2, hx + 8));
+      }
+      if (pr.p === 'sofa' || pr.p === 'armchair') {
+        const y = pr.h ? -pr.h : seatY(), cx = cxOf(), w = pr.w || (pr.p === 'sofa' ? 140 : 62);
+        const bk = pr.back || 'b';
+        let q = '';
+        if (bk === 'b') q += `<rect x="${f1(cx - w / 2 + 4)}" y="${f1(y - 44)}" width="${w - 8}" height="46" rx="7" class="uph2"/>`;
+        else { const bx = bk === 'r' ? cx + w / 2 - 12 : cx - w / 2; q += `<rect x="${f1(bx)}" y="${f1(y - 46)}" width="12" height="${f1(-y + 40)}" rx="5" class="uph2"/>`; }
+        q += `<rect x="${f1(cx - w / 2)}" y="${f1(y)}" width="${w}" height="${f1(-y - 6)}" rx="5" class="uph"/>`;
+        q += `<rect x="${f1(cx - w / 2 + 3)}" y="-6" width="3" height="6" class="wood"/><rect x="${f1(cx + w / 2 - 6)}" y="-6" width="3" height="6" class="wood"/>`;
+        if (bk === 'b') q += `<rect x="${f1(cx - w / 2 - 6)}" y="${f1(y - 16)}" width="12" height="${f1(-y + 10)}" rx="5" class="uph2"/><rect x="${f1(cx + w / 2 - 6)}" y="${f1(y - 16)}" width="12" height="${f1(-y + 10)}" rx="5" class="uph2"/>`;
+        add2(q, -60); grow(cx - w / 2 - 6, cx + w / 2 + 6);
+      }
+      if (pr.p === 'doorframe') {
+        const x = pr.x || 0, w = pr.w || 70, h = 200;
+        add2(`<rect x="${f1(x - w / 2)}" y="${-h}" width="${w}" height="${h}" class="opening"/><rect x="${f1(x - w / 2 - 7)}" y="${-h - 7}" width="7" height="${h + 7}" class="pr2"/><rect x="${f1(x + w / 2)}" y="${-h - 7}" width="7" height="${h + 7}" class="pr2"/><rect x="${f1(x - w / 2 - 7)}" y="${-h - 7}" width="${w + 14}" height="7" class="pr2"/>`, -70);
+        grow(x - w / 2 - 7, x + w / 2 + 7);
+      }
+      if (pr.p === 'counter') {
+        const x = pr.x || 0, w = pr.w || 90, h = pr.h || 92;
+        add2(`<rect x="${f1(x - w / 2 + 3)}" y="${-h + 4}" width="${w - 6}" height="${h - 4}" class="pr1"/><rect x="${f1(x - w / 2 + 3)}" y="${-h + 4}" width="${w - 6}" height="3" class="pr3"/><rect x="${f1(x - w / 2)}" y="${-h}" width="${w}" height="5" rx="1" class="pr2"/>`, pr.front === false ? Z : 90);
+        grow(x - w / 2, x + w / 2);
+      }
+      if (pr.p === 'table') {
+        const x = pr.x || 0, w = pr.w || 52, h = pr.h || 74;
+        add2(`<rect x="${f1(x - w / 2)}" y="${-h}" width="${w}" height="4" rx="2" class="pr2"/><rect x="${f1(x - 1.6)}" y="${-h + 3}" width="3.2" height="${h - 5}" class="pr2"/><rect x="${f1(x - 13)}" y="-3" width="26" height="3" rx="1.5" class="pr2"/>`, pr.front ? 90 : Z);
+        grow(x - w / 2, x + w / 2);
+        if (pr.cup) add2(`<path d="M${f1(x + pr.cup - 3)},${-h - 7}h6l-0.8,7h-4.4Z" fill="#EFE9E0" stroke="#CFC6B9" stroke-width="0.5"/>`, pr.front ? 91 : Z + 1);
+        if (pr.laptop) add2(`<path d="M${f1(x + pr.laptop - 12)},${-h}h22l-2,-1.5h-18Z" fill="#8E8E90"/><path d="M${f1(x + pr.laptop - 12)},${-h - 1}l-4,-15h2l4,15Z" fill="#3A3A3C"/>`, pr.front ? 91 : Z + 1);
+      }
+      if (pr.p === 'board') {
+        const x = pr.x || 0, w = pr.w || 80, h = pr.h || 54, y = pr.y || 96;
+        add2(`<rect x="${f1(x - w / 2)}" y="${-y - h}" width="${w}" height="${h}" rx="1.5" fill="#FBFBFA" stroke="#B9B5AE" stroke-width="2.5"/><path d="M${f1(x - w / 2 + 10)},${-y - h + 14}h${f1(w * 0.5)}M${f1(x - w / 2 + 10)},${-y - h + 24}h${f1(w * 0.35)}M${f1(x - w / 2 + 10)},${-y - h + 34}h${f1(w * 0.42)}" stroke="#9A968F" stroke-width="1.4"/>`, -70);
+        grow(x - w / 2, x + w / 2);
+      }
+      if (pr.p === 'tulle') {
+        const x1 = bb.minX - 30, x2 = bb.maxX + 30, m = (x1 + x2) / 2;
+        add2(`<path d="M${f1(x1)},2C${f1(x1 + 6)},-10 ${f1(x1 + 30)},-20 ${f1(m - 30)},-14C${f1(m)},-26 ${f1(m + 40)},-10 ${f1(x2 - 26)},-18C${f1(x2 - 6)},-12 ${f1(x2)},-4 ${f1(x2 + 4)},2Z" fill="${pr.c || '#DCE3EA'}" opacity=".9"/>`, -57);
+        grow(x1, x2 + 4);
+      }
+      if (pr.p === 'flight') {
+        const n = pr.n || 4, rise = pr.rise || 15, run = pr.run || 26, x0 = pr.x0 || 0, sd = pr.dir === 'l' ? -1 : 1;
+        let d = `M${f1(x0)},0`;
+        for (let i = 0; i < n; i++) { d += `V${f1(-(i + 1) * rise)}H${f1(x0 + sd * (i + 1) * run)}`; }
+        d += `V0Z`;
+        add2(`<path d="${d}" class="pr1"/>`);
+        if (pr.rail) add2(`<path d="M${f1(x0 + sd * run * 0.5)},${f1(-rise - 86)}L${f1(x0 + sd * (n + 0.5) * run)},${f1(-(n + 1) * rise - 86)}" stroke="#8C8882" stroke-width="3" stroke-linecap="round"/>`);
+        grow(Math.min(x0, x0 + sd * n * run), Math.max(x0, x0 + sd * n * run));
+      }
+      if (pr.p === 'sheet') {
+        add2(`<path d="M${f1(bb.minX - 16)},0C${f1(bb.minX - 14)},-7 ${f1(bb.minX)},-5 ${f1((bb.minX + bb.maxX) / 2)},-5.5S${f1(bb.maxX + 14)},-7 ${f1(bb.maxX + 16)},0Z" class="pr1"/>`, -58);
+        grow(bb.minX - 16, bb.maxX + 16);
+      }
+      if (['bag', 'cup', 'bouquet', 'umbrella', 'shoes', 'card', 'folder', 'phone', 'book', 'glass', 'marker'].includes(pr.p)) {
+        const A = J.arms[pr.hand === 'l' ? 'la' : 'ra'];
+        const h = add(A.X, dir(A.fa), J.B.hand[1] * 0.8);
+        const zz = pr.z != null ? pr.z : 150;
+        if (pr.p === 'bag') add2(`<path d="M${f1(h[0] - 1)},${f1(h[1])}L${f1(h[0] - 7)},${f1(h[1] + 9)}M${f1(h[0] + 1)},${f1(h[1])}L${f1(h[0] + 7)},${f1(h[1] + 9)}" stroke="#2A2A2B" stroke-width="1.2" fill="none"/><rect x="${f1(h[0] - 10)}" y="${f1(h[1] + 8)}" width="20" height="14" rx="2.5" fill="#5E4638"/>`, zz);
+        if (pr.p === 'cup') add2(`<path d="M${f1(h[0] - 3.2)},${f1(h[1] - 7)}h6.4l-0.9,10h-4.6Z" fill="#EFE9E0" stroke="#CFC6B9" stroke-width="0.5"/><rect x="${f1(h[0] - 3.6)}" y="${f1(h[1] - 8.5)}" width="7.2" height="2" rx="0.8" fill="#2A2A2B"/>`, zz);
+        if (pr.p === 'book') add2(`<rect x="${f1(h[0] - 6)}" y="${f1(h[1] - 9)}" width="12" height="16" rx="1" fill="#6F5B4A" transform="rotate(${f1(-A.fa + 90 + (pr.rot || 0))} ${pt(h)})"/>`, zz);
+        if (pr.p === 'glass') add2(`<path d="M${f1(h[0] - 3.5)},${f1(h[1] - 13)}h7c0,5 -2,7 -3,7v6h-1v-6c-1,0 -3,-2 -3,-7Z" fill="#E9E4E8" stroke="#B9B1B6" stroke-width="0.5"/><path d="M${f1(h[0] - 3)},${f1(h[1] - 10)}h6c-0.4,2.6 -1.8,3.8 -3,3.8s-2.6,-1.2 -3,-3.8Z" fill="#8B3A4A"/>`, zz);
+        if (pr.p === 'marker') add2(`<rect x="${f1(h[0] - 1)}" y="${f1(h[1] - 8)}" width="2" height="9" rx="1" fill="#2A2A2B"/>`, zz);
+        if (pr.p === 'phone') add2(`<rect x="${f1(h[0] - 2.2)}" y="${f1(h[1] - 5)}" width="4.4" height="9" rx="1" fill="#1F1F20"/>`, zz);
+        if (pr.p === 'card') add2(`<rect x="${f1(h[0] - 7)}" y="${f1(h[1] - 10)}" width="14" height="10" rx="1" fill="#222" stroke="#EEE" stroke-width="0.8"/><circle cx="${f1(h[0])}" cy="${f1(h[1] - 5)}" r="2.6" fill="none" stroke="#999" stroke-width="0.7"/>`, zz);
+        if (pr.p === 'folder') add2(`<rect x="${f1(h[0] - 8)}" y="${f1(h[1] - 13)}" width="15" height="20" rx="1.2" fill="#2C2C2E" transform="rotate(${f1(-A.fa + 90)} ${pt(h)})"/>`, zz);
+        if (pr.p === 'shoes') add2(`<g transform="translate(${pt(h)})"><path d="M-8,-1c0,-4 5,-4 6,-1l1,3h-7Z" fill="#F3EFE8" stroke="#CFC6B9" stroke-width="0.5"/><path d="M1,0c0,-4 5,-4 6,-1l1,3h-7Z" fill="#F3EFE8" stroke="#CFC6B9" stroke-width="0.5"/></g>`, zz);
+        if (pr.p === 'bouquet') add2(`<g transform="translate(${pt(h)})"><path d="M0,0L-2,14M0,0L2,14M0,0L0,15" stroke="#6B7A5E" stroke-width="1.4"/><circle cx="-4" cy="-4" r="4.2" fill="#EFE9E0"/><circle cx="3.5" cy="-5" r="4.5" fill="#E3D2C3"/><circle cx="0" cy="-9" r="4" fill="#F4EFE7"/><circle cx="-6" cy="-9.5" r="3" fill="#C9D1C4"/><circle cx="6" cy="-10" r="3" fill="#C9D1C4"/></g>`, zz);
+        if (pr.p === 'umbrella') {
+          const topY = Math.min(...figs.map(F => F.Top[1])) - 14, cx = h[0] + (pr.dx || 0);
+          add2(`<path d="M${f1(cx)},${f1(topY)}L${f1(h[0])},${f1(h[1] + 6)}" stroke="#2A2A2B" stroke-width="1.4"/><path d="M${f1(cx - 44)},${f1(topY + 12)}Q${f1(cx)},${f1(topY - 26)} ${f1(cx + 44)},${f1(topY + 12)}Q${f1(cx + 29)},${f1(topY + 6)} ${f1(cx + 15)},${f1(topY + 12)}Q${f1(cx)},${f1(topY + 6)} ${f1(cx - 15)},${f1(topY + 12)}Q${f1(cx - 29)},${f1(topY + 6)} ${f1(cx - 44)},${f1(topY + 12)}Z" fill="#232324"/>`, zz);
+          grow(cx - 44, cx + 44); ext.top = Math.min(ext.top, topY - 16);
+        }
+      }
+      if (pr.p === 'jacket') {
+        const A = J.arms[pr.hand === 'l' ? 'la' : 'ra'];
+        const h = A.X, sd = pr.side === 'l' ? -1 : 1;
+        add2(`<path d="M${f1(h[0] - 3)},${f1(h[1] - 2)}C${f1(h[0] + sd * 4)},${f1(h[1] - 5)} ${f1(h[0] + sd * 12)},${f1(h[1] + 2)} ${f1(h[0] + sd * 14)},${f1(h[1] + 12)}L${f1(h[0] + sd * 17)},${f1(h[1] + 52)}L${f1(h[0] + sd * 3)},${f1(h[1] + 54)}C${f1(h[0] + sd * 2)},${f1(h[1] + 30)} ${f1(h[0])},${f1(h[1] + 10)} ${f1(h[0] - 3)},${f1(h[1] - 2)}Z" fill="${pr.c || '#8C7B68'}"/>`, (pr.f || 0) * 20 + 0.5);
+      }
+      if (pr.p === 'fabric') {
+        // flowing fabric held between both hands, trailing behind
+        const a = J.arms.la.X, b = J.arms.ra.X, sd = pr.side === 'l' ? -1 : 1;
+        const lo = Math.max(a[1], b[1]);
+        add2(`<path d="M${pt(a)}C${f1(a[0] + sd * 30)},${f1(a[1] - 18)} ${f1(b[0] + sd * 50)},${f1(b[1] - 10)} ${pt(b)}C${f1(b[0] + sd * 60)},${f1(lo + 40)} ${f1(a[0] + sd * 70)},${f1(-2)} ${f1(a[0] + sd * 90)},-1C${f1(a[0] + sd * 40)},${f1(lo + 10)} ${f1(a[0] + sd * 10)},${f1(a[1] + 20)} ${pt(a)}Z" fill="${pr.c || '#E9E3D9'}" opacity="0.9"/>`, (pr.f || 0) * 20 + 0.4);
+        grow(Math.min(a[0], a[0] + sd * 90), Math.max(a[0], a[0] + sd * 90));
+      }
+    });
+  }
+
+  function svg(pose, opts = {}) {
+    let figs;
+    try { figs = build(pose); } catch (e) { console.error(pose.id, e); return '<svg/>'; }
+    DEFS = [];
+    const parts = [];
+    figs.forEach(J => renderFig(J, parts));
+    let minX = 1e9, maxX = -1e9, minY = 1e9;
+    figs.forEach(J => bodyPoints(J).forEach(([p, r]) => {
+      minX = Math.min(minX, p[0] - r); maxX = Math.max(maxX, p[0] + r); minY = Math.min(minY, p[1] - r);
+    }));
+    figs.forEach(J => { minY = Math.min(minY, J.Top[1]); });
+    const bb = { minX, maxX, minY };
+    const ext = { min: minX, max: maxX, top: minY };
+    propParts(pose, figs, bb, parts, ext);
+    const W = 240, H = 260, G = 232;
+    const cw = ext.max - ext.min, ch = -ext.top;
+    const sc = Math.min(1, 212 / cw, 214 / ch) * (opts.scale || 1);
+    const cx = (ext.min + ext.max) / 2;
+    parts.sort((a, b) => a.z - b.z);
+    const id = 'f' + (++UID);
+    const shw = Math.min(118, (maxX - minX) * 0.55 + 14);
+    const shx = (minX + maxX) / 2;
+    const flip = opts.mirror ? ' scale(-1,1)' : '';
+    const lowF = parts.filter(p => p.fig && p.z < 90).map(p => p.s).join('');
+    const highF = parts.filter(p => p.fig && p.z >= 90).map(p => p.s).join('');
+    const ov = k => `<rect x="${f1(minX - 20)}" y="${f1(minY - 20)}" width="${f1(maxX - minX + 40)}" height="${f1(-minY + 30)}" fill="url(#${id}l)" clip-path="url(#${id}${k})"/>`;
+    parts.push({ z: 89.9, s: ov('k') });
+    if (highF) parts.push({ z: 149, s: ov('h') });
+    parts.sort((a, b) => a.z - b.z);
+    const light = ['0%', '100%'];
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${(pose.n || '').replace(/"/g, '')}">` +
+      "<defs>" + DEFS.join('') + `<linearGradient id="${id}l" x1="${light[0]}" y1="0%" x2="${light[1]}" y2="30%"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".12"/></linearGradient>` +
+      `<filter id="${id}b" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="3.2"/></filter>` +
+      `<filter id="${id}c" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="1.2"/></filter>` +
+      `<clipPath id="${id}k">${lowF}</clipPath>` + (highF ? `<clipPath id="${id}h">${highF}</clipPath>` : '') + `</defs>` +
+      `<g transform="translate(${W / 2},${G})${flip} scale(${f1(sc * 100) / 100}) translate(${f1(-cx)},0)">` +
+      `<ellipse cx="${f1(shx + shw * 0.35)}" cy="1.5" rx="${f1(shw * 1.25)}" ry="6" class="shd" opacity=".32" filter="url(#${id}b)"/>` +
+      `<ellipse cx="${f1(shx)}" cy="1" rx="${f1(shw * 0.8)}" ry="3" class="shd" opacity=".6" filter="url(#${id}c)"/>` +
+      parts.map(p => p.s).join('') +
+      `</g></svg>`;
+  }
+
+  return { svg, check, OUTFITS };
+})();
+if (typeof module !== 'undefined') module.exports = Fig;
+
+/* Pose library, part 1: street and lifestyle.
+   Sources: koby.photography (lifestyle prompts), lancereis.com (27 poses for men), jasminealley.com (couple poses). */
+const POSES = [];
+function cat(c, w, list) {
+  list.forEach((p, i) => POSES.push({ cat: c, who: w, id: `${c}-${w}-${String(i + 1).padStart(2, '0')}`, n: p[0], t: p[1], lv: p[2], d: p[3], s: p[4], tip: p[5], em: p[6], idea: p[7], feel: p[8], fig: p[9], props: p[10] || [] }));
+}
+const W = o => Object.assign({ g: 'w' }, o);
+const M = o => Object.assign({ g: 'm' }, o);
+
+cat('street', 'w', [
+  ['Foot on the Wall', 'Leaning', 1, 'Lean back on a wall and plant one sole flat against it.',
+    ['Shoulders and hips on the wall', 'Bend one knee and press the foot to the wall', 'One hand in the pocket'],
+    'Stand off to the side so the wall leads into the frame.',
+    'The triangle made by the bent knee.', 'A relaxed break in the middle of a walk through the city.', 'Casual, cool, unbothered.',
+    [W({ face: 'fr', o: 'w_turtle', sp: [-4, -6], hd: 6, ll: [46, -56, 70], rl: [-4, -2], la: { k: 'HL', d: [-1, 3] }, ra: [4, 2], back: ['ra', 'rl'] })], [{ p: 'wall', side: 'l' }]],
+  ['Hip Pop', 'Standing', 1, 'Shift your weight onto one leg and push that hip out.',
+    ['Weight fully on one leg', 'Push the hip toward the weighted side', 'Hand on the popped hip, elbow open'],
+    'Shoot full length from slightly below.',
+    'The S-curve from shoulder to hip, and the gap between arm and waist.', 'Show the shape of the outfit with one simple weight shift.', 'Confident and a little sassy.',
+    [W({ face: 'f', o: 'w_denim', sp: [-8, 5], hd: 7, rl: [-3, 0], ll: [7, -10], ra: { k: 'WR', d: [2, 2] }, la: [-10, -4] })]],
+  ['Street Style Walk', 'Walking', 1, 'Walk along the pavement as if nobody is watching.',
+    ['Walk at your normal pace, slightly slower', 'Place each foot just across the centre line', 'Let the coat and arms swing'],
+    'Shoot in bursts and keep the one where the front heel lands.',
+    'The stride and the movement of the coat.', 'The classic street style shot, and often the best opening portrait.', 'Stylish, busy, going somewhere.',
+    [W({ face: 'fr', o: 'w_coat', ll: [24, 8], rl: [-16, -36], la: [-16, -8], ra: [20, 34], back: ['ra', 'rl'] })]],
+  ['Walking Toward, Hands in Pockets', 'Walking', 1, 'Walk slowly toward the camera with both hands in your pockets.',
+    ['Hands in the pockets, elbows bent', 'Slow, relaxed steps toward the lens', 'Look down, then up at the camera'],
+    'Find a bridge, a canal or a long pavement as a leading line.',
+    'The bent elbows, which open up the silhouette.', 'An easy, unposed way to walk into the frame.', 'Approachable and relaxed.',
+    [W({ face: 'f', o: 'w_trench', hair: 'long', hd: 4, ll: [-4, -2], rl: [-3, 14, 30], la: { k: 'HL', d: [0, 3] }, ra: { k: 'HR', d: [0, 3] } })]],
+  ['Walk Away, Glance Back', 'Walking', 2, 'Walk away from the camera and look back over your shoulder.',
+    ['Walk away at half speed', 'Turn only the head back', 'Let the back heel lift'],
+    'Frame the street, the market or the arcade ahead of her.',
+    'The turn of the head and the line of the back.', 'As if a friend caught you walking ahead of them.', 'Candid and inviting.',
+    [W({ face: 'b', hf: 'r', o: 'w_leather', hd: 8, rl: [2, -1], ll: [-3, 12, 20, 1, 0.9], la: [-10, -6], ra: [12, 8] })]],
+  ['Coffee in the Park', 'Walking', 1, 'Stroll through the park with a coffee in your hand.',
+    ['Hold the cup at chest height', 'Walk slowly, looking ahead', 'Take a sip on the third step'],
+    'Shoot across the path so the greenery frames her.',
+    'The cup and the free, swinging arm.', 'An everyday moment that shows your lifestyle.', 'Casual, calm, easy-going.',
+    [W({ face: 'r', o: 'w_denim', hair: 'pony', ll: [22, 8], rl: [-16, -30], la: [8, 128], ra: [-14, -8], back: ['ra', 'rl'] })], [{ p: 'cup', hand: 'l' }]],
+  ['On the Building Steps', 'Seated', 1, 'Sit on the front steps of a beautiful building, one foot higher than the other.',
+    ['Sit on a step, one foot a step higher', 'Rest the near elbow on the raised knee', 'Other hand behind you on the step'],
+    'Get low and include the doorway or columns.',
+    'The raised knee and the architecture around her.', 'A pause in a day of exploring the city.', 'Grounded and contemplative.',
+    [W({ face: 'fr', o: 'w_denim', sp: [6, 8], hd: 6, ll: [128, -6], rl: [76, -2], la: { k: 'KL', d: [2, -6] }, ra: { k: 'HR', d: [-14, 6] }, back: ['ra', 'rl'] })], [{ p: 'stairs', side: 'r', n: 1 }]],
+  ['Window Shopping', 'Standing', 1, 'Stand in profile at a shop window, fingertips on the glass.',
+    ['Face the window in profile', 'Bag on the far arm', 'Near fingertips lightly on the glass'],
+    'Shoot from the pavement side, the reflection is a bonus.',
+    'The profile and the curve of the back.', 'Caught looking at something you want.', 'Curious, aspirational, elegant.',
+    [W({ face: 'l', o: 'w_coat', hd: -4, rl: [-6, -2], ll: [4, 2], ra: { at: [-30, -126] }, la: [4, 8], back: ['la', 'll'] })], [{ p: 'window', x: -52, w: 58, h: 150, y: 24 }, { p: 'bag', hand: 'l' }]],
+  ['Stepping Down the Stairs', 'Walking', 2, 'Walk down a staircase, one hand on the rail.',
+    ['Start two steps from the bottom', 'Hand slides along the rail', 'Look down at your feet, then up'],
+    'Shoot from the bottom so the steps lead to her.',
+    'The step down and the hand on the rail.', 'An elegant entrance, like leaving a grand hotel.', 'Graceful and purposeful.',
+    [W({ face: 'fr', o: 'w_leather', hd: 10, ll: [14, 4], rl: [-22, -42], la: [-30, -12], ra: [10, 6], back: ['ra', 'rl'] })], [{ p: 'flight', x0: -16, dir: 'l', rise: 13, n: 5, run: 24, rail: true }]],
+  ['Café Table', 'Seated', 1, 'Sit at a café table, chin resting on your hand, legs crossed.',
+    ['Sit sideways to the table', 'Elbow on the table, chin on the hand', 'Cross the legs toward the camera'],
+    'Shoot from the pavement with the café in the background.',
+    'The hand at the chin and the crossed legs.', 'A slow morning, waiting for a friend.', 'Social, relaxed, approachable.',
+    [W({ face: 'fr', o: 'w_turtle', sp: [6, 10], hd: 10, ll: [96, 24], rl: [84, -4], la: { k: 'Chin', d: [1, 3] }, ra: { at: [30, -76] }, back: ['ra', 'rl'] })], [{ p: 'chair', side: 'l' }, { p: 'table', x: 36, cup: 6 }]],
+  ['Bench Lounge', 'Seated', 1, 'Sit on a park bench, one arm along the backrest.',
+    ['Sit back into the bench', 'Stretch one arm along the backrest', 'Cross the legs, lean slightly back'],
+    'Leave empty bench space on one side of the frame.',
+    'The open arm along the backrest.', 'Owning the space, at home in the city.', 'Relaxed and self-assured.',
+    [W({ face: 'fr', o: 'w_coat', sp: [-6, -6], hd: 4, ll: [96, 24], rl: [84, -4], la: { at: [-36, -86] }, ra: { k: 'KL', d: [-6, -4] }, back: ['ra', 'rl'] })], [{ p: 'bench', w: 116, dx: -14, back: true }]],
+  ['Leaning on the Railing', 'Leaning', 1, 'Lean your forearms on a railing and look out at the water.',
+    ['Forearms on the rail, shoulders relaxed', 'Cross one ankle behind the other', 'Look out, not at the camera'],
+    'Shoot from the side to include the view she is looking at.',
+    'The long line from head to crossed ankles.', 'A quiet moment by the water.', 'Peaceful, reflective.',
+    [W({ face: 'r', o: 'w_trench', hair: 'bun', sp: [24, 30], hd: 16, ll: [2, 0], rl: [-6, -12, 60], la: { at: [28, -102] }, ra: { at: [34, -103] }, back: ['ra', 'rl'] })], [{ p: 'rail', h: 102, x1: 14, x2: 78 }]]
+]);
+
+cat('street', 'm', [
+  ['Both Hands in Pockets', 'Standing', 1, 'Stand tall with both hands in your pockets.',
+    ['Weight on one leg', 'Hands in the pockets, thumbs out', 'Chin slightly down'],
+    'Try full hands in, then only the fingers, for variation.',
+    'Squared shoulders and relaxed elbows.', 'The simplest way to fix the question of what to do with your hands.', 'Casual confidence.',
+    [M({ face: 'f', o: 'm_coat', sp: [3, -2], hd: -3, ll: [-6, -3], rl: [2, 5], la: { k: 'HL', d: [1, 4] }, ra: { k: 'HR', d: [-1, 4] } })]],
+  ['Side Lean With a Coffee', 'Leaning', 1, 'Lean one shoulder on a wall with a coffee in hand.',
+    ['Shoulder on the wall, good posture', 'Coffee held at chest height', 'Look away down the street'],
+    'Let the wall run out of the frame.',
+    'The line of the lean and the coffee.', 'A lifestyle moment between two appointments.', 'Laid back and approachable.',
+    [M({ face: 'fr', o: 'm_tee', sp: [-6, -8], hd: 12, ll: [10, -6], rl: [4, 2], la: [-4, -2], ra: [10, 130], back: ['rl'] })], [{ p: 'wall', side: 'l' }, { p: 'cup', hand: 'r' }]],
+  ['Hand on the Wrist', 'Standing', 1, 'Rest one hand on your watch, looking down at it.',
+    ['Bring one wrist across the waist', 'Other hand on the watch', 'Eyes on the hands, then up'],
+    'Great for detail crops of the watch or bracelet.',
+    'The hands and the accessory.', 'A small, deliberate gesture.', 'Polished and put-together.',
+    [M({ face: 'f', o: 'm_shirt', hd: 10, ll: [-4, -2], rl: [4, 2], ra: [2, -80], la: { k: 'XR', d: [1, 0] } })]],
+  ['Over the Shoulder', 'Standing', 2, 'Turn away and look back over your shoulder.',
+    ['Back three-quarters to the camera', 'Turn the head back', 'Keep the expression serious'],
+    'Works best with a strong jacket or coat.',
+    'The back of the jacket and the profile.', 'A glance back as you leave.', 'Mysterious, guarded.',
+    [M({ face: 'b', hf: 'r', o: 'm_denim', sp: [2, -2], hd: 8, ll: [-2, 0], rl: [6, -6], la: [-6, -3], ra: [8, 3] })]],
+  ['The Sleeve Pull', 'Standing', 1, 'Pull up the sleeve of your jacket, eyes on the arm.',
+    ['Bring the forearm across the body', 'Other hand pulls the sleeve up', 'Look at the sleeve'],
+    'Shoot the movement, not the still moment.',
+    'The interaction between hands and clothes.', 'Getting ready to work, rolling up the sleeves.', 'Casual and deliberate.',
+    [M({ face: 'fl', o: 'm_shirt', hd: -10, rl: [-4, 2], ll: [4, -2], ra: [-4, -84], la: { k: 'XR', d: [8, 0] }, back: ['la', 'll'] })]],
+  ['Jacket Over One Shoulder', 'Standing', 1, 'Hook your jacket on one finger and let it hang behind your shoulder.',
+    ['Hold the jacket by the collar', 'Hand rests at the shoulder', 'Other hand in the pocket'],
+    'Backlight at golden hour makes the shirt glow.',
+    'The relaxed elbow and the jacket shape.', 'The end of a long day, heading home.', 'Relaxed sophistication.',
+    [M({ face: 'fr', o: 'm_shirt', hd: 6, ll: [6, -2], rl: [-3, -1], la: [28, -166], ra: { k: 'HR', d: [-2, 4] }, back: ['ra', 'rl'] })], [{ p: 'jacket', hand: 'l', side: 'l', c: '#6E6454' }]],
+  ['Sit and Lean', 'Seated', 1, 'Sit on a bench, elbow on your knee and hand to your face.',
+    ['Sit on the front of the bench', 'Elbow on the knee', 'Loose fingers near the jaw'],
+    'Get down to his eye level.',
+    'The hand near the face and the forward lean.', 'Deep in thought on a city break.', 'Contemplative and approachable.',
+    [M({ face: 'fr', o: 'm_tee', sp: [22, 26], hd: 12, ll: [86, -4], rl: [80, -8], la: { k: 'Chin', d: [0, 4], b: 'down' }, ra: { k: 'KR', d: [0, -4] }, back: ['ra', 'rl'] })], [{ p: 'bench', w: 90, dx: -10 }]],
+  ['Back to the Wall', 'Leaning', 1, 'Lean your back flat on a wall and look into the distance.',
+    ['Back and shoulders on the wall', 'Cross the arms or keep hands in pockets', 'Look away down the street'],
+    'Try the same pose from three different angles.',
+    'The vertical line of the wall and the gaze.', 'Waiting for someone, lost in thought.', 'Grounded and reflective.',
+    [M({ face: 'fl', o: 'm_denim', sp: [4, 5], hd: -16, rl: [-10, 4], ll: [4, -2], ra: { k: 'HR', d: [-2, 4] }, la: [4, 2], back: ['la', 'll'] })], [{ p: 'wall', side: 'r', gap: -2 }]],
+  ['Hand Behind the Head', 'Standing', 1, 'Put one hand behind your head, elbow up.',
+    ['Weight on the back leg', 'One hand behind the head', 'Keep the neck straight'],
+    'Shoot slightly from below.',
+    'The raised elbow and open chest.', 'A relaxed stretch between two moments.', 'Leisurely confidence.',
+    [M({ face: 'fr', o: 'm_tee', hd: 4, ll: [6, -3], rl: [-3, -1], la: [-150, 100], ra: [6, 4], back: ['ra', 'rl'] })]],
+  ['Sit, One Leg Under', 'Seated', 1, 'Sit on the ground with one leg tucked under and the other knee up.',
+    ['Tuck one leg under you', 'Other knee up, forearm resting on it', 'Lean back on the far hand'],
+    'Shoot at ground level.',
+    'The forearm on the thigh and the relaxed spine.', 'Taking a break in a park or on a rooftop.', 'Grounded and approachable.',
+    [M({ face: 'r', o: 'm_denim', sp: [-4, -2], hd: 6, ll: [136, 0], rl: [84, -92, 0], la: { k: 'KL', d: [2, -4] }, ra: { k: 'HL', d: [-14, 12] }, back: ['ra', 'rl'] })]],
+  ['Sitting on the Steps', 'Seated', 1, 'Sit on the steps with one foot higher than the other.',
+    ['One foot a step higher', 'Forearms on the knees', 'Look at the camera, then away'],
+    'Try both a straight-on and a side angle.',
+    'The uneven legs, which make the pose look natural.', 'Hanging out, relaxed and unhurried.', 'Relaxed and candid.',
+    [M({ face: 'fr', o: 'm_coat', sp: [18, 22], hd: 10, ll: [118, -4], rl: [84, -8], la: { k: 'KL', d: [6, -2] }, ra: { k: 'KR', d: [4, -2] }, back: ['ra', 'rl'] })], [{ p: 'stairs', side: 'r', n: 1 }]],
+  ['Candid Walk', 'Walking', 1, 'Walk along the pavement without looking at the camera.',
+    ['Walk a straight line', 'Arms swing naturally', 'Look ahead or at a shop window'],
+    'Shoot from the side or slightly below.',
+    'The stride and the arm swing.', 'Unguarded movement, as if he did not know about the camera.', 'Authentic and natural.',
+    [M({ face: 'r', o: 'm_coat', ll: [24, 8], rl: [-16, -32], la: [-16, -8], ra: [18, 26], back: ['ra', 'rl'] })]]
+]);
+
+cat('street', 'c', [
+  ['Walking Parallel to the Camera', 'Walking', 1, 'Walk side by side across the frame, holding hands.',
+    ['Walk in step, same direction', 'Hold hands between you', 'Talk to each other as you walk'],
+    'Leave space ahead of them in the frame.',
+    'The matching stride and the joined hands.', 'A journey you share.', 'Connected and contemplative.',
+    [M({ face: 'r', x: -10, o: 'm_shirt', hd: 10, ll: [22, 8], rl: [-16, -30], la: [-14, -8], ra: [16, 24], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 16, o: 'w_coat', hd: -6, ll: [22, 8], rl: [-16, -30], la: [-14, -8], ra: [16, 24], back: ['ra', 'rl'] })]],
+  ['Walking Toward, Looking at Each Other', 'Walking', 1, 'Walk toward the camera holding hands and looking at each other.',
+    ['Walk side by side, slow pace', 'Hold hands between you', 'Look at each other and talk'],
+    'Use a bridge or a path as a leading line.',
+    'The eye contact between them.', 'Focused on each other, not the lens.', 'Intimate and romantic.',
+    [M({ face: 'f', x: -24, o: 'm_coat', hd: 8, ll: [-5, -2], rl: [3, 12, 30], la: [-10, -6], ra: { k: 'XL', f: 1 } }),
+     W({ face: 'f', x: 22, o: 'w_trench', hd: -8, ll: [-3, 12, 30], rl: [4, 2], la: [-26, -18], ra: [10, 6] })]],
+  ['She Leads Him On', 'Walking', 1, 'She walks ahead and pulls him along by the hand.',
+    ['She walks a step ahead', 'Her arm reaches back for his hand', 'She looks back over her shoulder'],
+    'Shoot from in front of her.',
+    'The stretched arms joining them.', 'An adventure she is leading.', 'Playful, trusting.',
+    [M({ face: 'r', x: -32, o: 'm_shirt', ll: [18, 6], rl: [-12, -24], la: { k: 'XL', f: 1 }, back: ['ra', 'rl'] }),
+     W({ face: 'r', hf: 'l', x: 30, o: 'w_denim', ll: [-12, -26], rl: [18, 6], la: [-72, -80], ra: [10, 16], back: ['ra'] })]],
+  ['Run Together', 'Walking', 2, 'Run side by side, laughing.',
+    ['Start running on the count of three', 'Arms bent, big strides', 'Laugh, look at each other'],
+    'Use a fast shutter and shoot a long burst.',
+    'The energy and the airborne feet.', 'Pure joy, like kids on a holiday.', 'Energetic and joyful.',
+    [M({ face: 'r', x: -12, o: 'm_tee', sp: [8, 10], hd: 6, ll: [44, 10], rl: [-30, -84], la: [-30, 40], ra: [40, 120], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 18, o: 'w_denim', sp: [6, 8], hd: -8, up: 6, ll: [-26, -80], rl: [40, 6], la: [36, 118], ra: [-30, 40], back: ['ra', 'rl'] })]],
+  ['Holding Hands, Pointing', 'Standing', 1, 'Hold hands while he points at something in the distance.',
+    ['Stand angled toward the view', 'Hold hands', 'He points, she follows his arm'],
+    'Include what they are pointing at.',
+    'The pointing arm, which leads the eye.', 'Discovering a new place together.', 'Excited and exploratory.',
+    [M({ face: 'fr', x: -10, o: 'm_denim', hd: -6, la: [128, 118], ra: { k: 'XL', f: 1 }, back: ['ra', 'rl'] }),
+     W({ face: 'fr', x: 12, o: 'w_denim', hd: -10, sp: [-3, -5], la: [-20, -14], ra: [8, 4], back: ['ra', 'rl'] })]],
+  ['Looking Out Together', 'Standing', 1, 'Stand angled, holding hands, both looking at the same view.',
+    ['Turn both bodies toward the view', 'Hold hands low', 'Both look out, not at the lens'],
+    'A favourite for travel photos, leave the view in frame.',
+    'The shared direction of their gaze.', 'A shared goal or a shared horizon.', 'United and adventurous.',
+    [M({ face: 'br', x: -14, o: 'm_coat', hd: 6, ll: [-4, -2], rl: [4, 2], ra: { k: 'XL', f: 1 } }),
+     W({ face: 'br', x: 14, o: 'w_trench', hd: -4, ll: [-3, -1], rl: [5, 3], la: [-16, -10], ra: [6, 4] })]],
+  ['One Looks at the Camera', 'Standing', 1, 'She looks at the camera while he looks at her.',
+    ['Stand close, his arm around her waist', 'She looks into the lens', 'He looks at her, smiling'],
+    'Focus on her eyes.',
+    'The contrast between the two gazes.', 'He only has eyes for her.', 'Intriguing and affectionate.',
+    [M({ face: 'fr', x: -12, o: 'm_shirt', sp: [4, 6], hd: 22, la: { k: 'WL', f: 1, d: [4, 2] }, ra: [-4, -2], fo: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'f', x: 10, o: 'w_turtle', hd: -4, la: [-10, -6], ra: [10, 6] })]],
+  ['Arms Around Each Other', 'Standing', 1, 'Stand back to the camera, arms around each other, looking at the view.',
+    ['Stand side by side, backs to the lens', 'Arms around each other\'s waist', 'Lean the heads together'],
+    'Frame the landscape or the street they face.',
+    'The embrace and the scenery.', 'Taking in the moment together.', 'Protective and peaceful.',
+    [M({ face: 'b', x: -14, o: 'm_denim', hd: 8, la: [-6, -4], ra: { k: 'WL', f: 1, d: [2, 0] }, top: ['ra'] }),
+     W({ face: 'b', x: 14, o: 'w_leather', hd: -10, la: { k: 'WR', f: 0, d: [-2, 0] }, ra: [8, 4] })]],
+  ['Backs Turned, Eyes on Each Other', 'Standing', 1, 'Backs to the camera, holding hands, heads turned toward each other.',
+    ['Stand with backs to the lens', 'Hold hands between you', 'Turn the heads to face each other'],
+    'Great for couples who are shy of the camera.',
+    'The two profiles facing each other.', 'A private moment in a public place.', 'Romantic and intimate.',
+    [M({ face: 'b', hf: 'r', x: -16, o: 'm_coat', hd: 6, ll: [-4, -2], rl: [4, 2], la: [-6, -4], ra: { k: 'XL', f: 1 } }),
+     W({ face: 'b', hf: 'l', x: 16, o: 'w_trench', hd: -6, ll: [-3, -1], rl: [5, 3], la: [-16, -8], ra: [8, 4] })]],
+  ['Cheers', 'Standing', 1, 'Raise your glasses toward each other.',
+    ['Face each other, glasses raised', 'Touch the glasses between you', 'Laugh at the clink'],
+    'Shoot the moment of the clink.',
+    'The glasses meeting in the middle of the frame.', 'A celebration of the two of you.', 'Celebratory and happy.',
+    [M({ face: 'r', x: -24, o: 'm_shirt', hd: 6, la: [34, 118], ra: [-4, -2], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 24, o: 'c_black', hd: -6, ra: [-34, -118], la: [-4, -2], back: ['la', 'll'] })], [{ p: 'glass', f: 0, hand: 'l' }, { p: 'glass', f: 1, hand: 'r' }]],
+  ['Talking on the Steps', 'Seated', 1, 'Sit together on the steps, turned toward each other, laughing.',
+    ['Sit close on the same step', 'Knees angled toward each other', 'Talk and laugh, forget the camera'],
+    'Give them something real to talk about.',
+    'The angle of the knees toward each other.', 'A candid conversation between two people in love.', 'Genuine, happy, candid.',
+    [M({ face: 'fr', x: -32, o: 'm_denim', sp: [8, 10], hd: 12, ll: [104, -2], rl: [86, -8], la: { k: 'KL', d: [-2, -6] }, ra: [10, 30], back: ['ra', 'rl'] }),
+     W({ face: 'fl', x: 32, o: 'w_denim', sp: [-6, -8], hd: -14, rl: [-104, 2], ll: [-86, 6], ra: { k: 'KR', d: [2, -6] }, la: [4, 30], back: ['ll', 'la'] })], [{ p: 'cube', w: 140, f: 0, cx: 0 }]],
+  ['Sharing a Bite', 'Seated', 2, 'At a café table, she feeds him a bite across the table.',
+    ['Sit facing each other at a small table', 'She offers a bite on a fork', 'He leans in to take it'],
+    'Shoot from the side to see both profiles.',
+    'The reaching arm between them.', 'A playful, intimate moment over food.', 'Playful and sensual.',
+    [M({ face: 'r', x: -52, o: 'm_shirt', sp: [12, 16], hd: 14, ll: [84, -4], rl: [80, -8], la: { at: [-22, -77] }, ra: [-4, -2], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 52, o: 'w_turtle', sp: [-8, -10], hd: -6, rl: [-84, 4], ll: [-80, 8], ra: [-60, -104], la: { at: [22, -77] }, back: ['la', 'll'] })], [{ p: 'chair', f: 0, side: 'l' }, { p: 'chair', f: 1, side: 'r' }, { p: 'table', x: 0, w: 58, cup: -14 }]]
+]);
+
+/* Pose library, part 2: portrait and personal branding.
+   Sources: brypenney.com (standing branding poses), lancereis.com (27 poses for men), koby.photography (lifestyle scenes). */
+cat('portrait', 'w', [
+  ['The Doorway Lean', 'Leaning', 1, 'Lean one shoulder into a door frame, ankles crossed.',
+    ['Shoulder against the frame', 'Cross the front ankle over the back one', 'One hand in the pocket, chin toward the light'],
+    'Stand back so the whole door frame is in the picture.',
+    'The frame around her and the relaxed diagonal of the lean.', 'Welcoming someone into your space, your studio or your office.', 'Inviting and at ease.',
+    [W({ face: 'fl', x: 16, o: 'w_ivory', sp: [-6, -9], hd: -6, rl: [-6, 8], ll: [2, -2], ra: { k: 'HR', d: [-2, 3] }, la: [-4, -2], back: ['la', 'll'] })], [{ p: 'doorframe', x: -34, w: 64 }]],
+  ['Coffee Mug, Two Hands', 'Standing', 1, 'Hold a mug with both hands at chest height, by a window.',
+    ['Stand near a window', 'Both hands around the mug', 'Look out, then back with a smile'],
+    'Soft window light from the side is all you need.',
+    'The warm gesture of both hands around the mug.', 'The calm moment before the working day starts.', 'Warm, calm, approachable.',
+    [W({ face: 'fr', o: 'w_blouse', hd: 6, ll: [5, -3], rl: [-3, 0], la: { k: 'ChL', d: [12, 8] }, ra: { k: 'ChL', d: [14, 6] }, back: ['ra', 'rl'] })], [{ p: 'cup', hand: 'r' }, { p: 'window', x: 50, w: 64, curtain: 'r' }]],
+  ['Notebook to the Chest', 'Standing', 1, 'Hug a notebook or laptop against your chest.',
+    ['Three-quarter stance', 'Hold the notebook flat against the chest', 'Weight on the back leg'],
+    'Pick a notebook or laptop that matches your brand colours.',
+    'The prop that shows what you do.', 'A creative or consultant between two meetings.', 'Friendly and professional.',
+    [W({ face: 'fr', o: 'w_ivory', hd: 4, ll: [5, -3], rl: [-3, 0], la: { k: 'ChL', d: [10, 6], b: 'down' }, ra: [6, 4], back: ['ra', 'rl'] })], [{ p: 'folder', hand: 'l', rot: 90 }]],
+  ['Adjusting the Blazer', 'Standing', 1, 'Pull the lapels of your blazer as if straightening it.',
+    ['Both hands hold the lapels', 'Step one foot forward', 'Shoot during the movement'],
+    'Ask for three slow pulls and keep the middle frame.',
+    'The hands on the jacket and the open chest.', 'Ready to walk into the room.', 'Confident and polished.',
+    [W({ face: 'f', o: 'w_suit', hair: 'bun', ll: [3, 7], rl: [1, -5], la: { k: 'ChL', d: [5, 2], b: 'down' }, ra: { k: 'ChR', d: [-5, 2], b: 'down' } })]],
+  ['Walking and Laughing', 'Walking', 1, 'Walk toward the camera and laugh, looking down.',
+    ['Walk slowly toward the lens', 'Laugh at something, look down', 'Let one hand swing, the other holds a notebook'],
+    'A real joke works better than "laugh now".',
+    'Movement and a real laugh.', 'Showing the person behind the brand.', 'Joyful and genuine.',
+    [W({ face: 'fr', o: 'w_suit', hd: 12, ll: [18, 6], rl: [-12, -26], la: [-12, -6], ra: [8, 70], back: ['ra', 'rl'] })], [{ p: 'folder', hand: 'r' }]],
+  ['Hand on the Collarbone', 'Standing', 1, 'Rest your fingertips lightly on your collarbone.',
+    ['Three-quarter stance', 'Fingertips on the collarbone, no pressure', 'Chin slightly down'],
+    'Keep the hand soft, fingers relaxed and together.',
+    'The line of the neck and the graceful hand.', 'A soft, elegant portrait for a bio or a book cover.', 'Graceful and warm.',
+    [W({ face: 'fl', o: 'w_blouse', hd: -4, rl: [-5, 4], ll: [3, -1], ra: { k: 'neckR', d: [-3, 5] }, la: [4, 2], back: ['la', 'll'] })]],
+  ['Hip Against the Desk', 'Leaning', 1, 'Lean your hip on the edge of a desk, one hand on it.',
+    ['Rest the hip on the desk edge', 'One hand on the desk behind you', 'Cross the ankles in front'],
+    'Show a tidy corner of your workspace.',
+    'The relaxed diagonal of the body.', 'At home in your own office.', 'Relaxed authority.',
+    [W({ face: 'fr', o: 'w_suit', x: 12, sp: [-6, -4], hd: 4, ll: [18, 14], rl: [10, 18], ra: { at: [-18, -77] }, la: [-6, -4], back: ['ra', 'rl'] })], [{ p: 'desk', x: -26, w: 70, h: 76 }]],
+  ['Arms Crossed, Big Smile', 'Standing', 1, 'Cross your arms low and smile with your whole face.',
+    ['Cross the arms below the chest', 'Tilt the head slightly', 'Smile until the eyes crease'],
+    'Crossed arms need a warm expression, or they read as closed.',
+    'The smile, which softens the power stance.', 'Showing strength and kindness at the same time.', 'Confident and friendly.',
+    [W({ face: 'f', o: 'w_suit', hd: 6, ll: [-4, -2], rl: [4, 2], la: [-2, 82, 1, 0.85], ra: [2, -82, 1, 0.85] })]],
+  ['At the Kitchen Island', 'Standing', 1, 'Lean your forearms on a kitchen island, mug in hand.',
+    ['Stand behind the counter', 'Forearms rest on the surface', 'Lean in toward the lens'],
+    'Clear the counter except for one or two objects.',
+    'The lean toward the camera.', 'A host welcoming you in, or a food brand at home.', 'Hospitable and warm.',
+    [W({ face: 'fr', o: 'w_blouse', hair: 'pony', sp: [26, 32], hd: 10, ll: [3, 0], rl: [-4, -2], la: { at: [14, -94] }, ra: { at: [24, -95] }, back: ['ra', 'rl'] })], [{ p: 'counter', x: 16, w: 76, h: 94 }]],
+  ['Writing on the Board', 'Standing', 2, 'Write on a whiteboard, then turn to the camera.',
+    ['Stand beside the board', 'Near hand writes, marker raised', 'Turn the face and shoulders to the camera'],
+    'Write real words, not scribbles.',
+    'The raised arm and the turned face.', 'An expert explaining an idea.', 'Knowledgeable and engaging.',
+    [W({ face: 'fr', o: 'w_blouse', hd: -8, ll: [5, -3], rl: [-3, 0], la: { at: [-40, -140] }, ra: [6, 4], back: ['ra', 'rl'] })], [{ p: 'board', x: -66, y: 104, w: 72, h: 58 }, { p: 'marker', hand: 'l' }]],
+  ['Relaxed on the Sofa', 'Seated', 1, 'Sit on a sofa with one arm along the backrest and legs crossed.',
+    ['Sit back into the corner of the sofa', 'Arm along the backrest', 'Cross the legs toward the camera'],
+    'A clean, neutral sofa keeps the focus on her.',
+    'The open arm and the relaxed shoulders.', 'Comfortable in your own home.', 'Relaxed and intimate.',
+    [W({ face: 'fr', o: 'w_denim', sp: [-8, -8], hd: 6, ll: [94, 26], rl: [84, -4], la: { k: 'ShL', d: [-14, -4] }, ra: { k: 'KL', d: [-6, -4] }, back: ['ra', 'rl'] })], [{ p: 'sofa', back: 'l', w: 90, dx: -12 }]],
+  ['Seated Lean-In', 'Seated', 1, 'Sit on a stool and lean forward, elbows on your knees.',
+    ['Sit on the front of the stool', 'Elbows on the knees', 'Hands loosely joined'],
+    'Get down to her eye level.',
+    'The lean toward the camera.', 'Listening, engaged, ready to help.', 'Open and interested.',
+    [W({ face: 'fr', o: 'w_ivory', hair: 'bun', sp: [22, 24], hd: 8, ll: [84, -4], rl: [78, -8], la: { k: 'KL', d: [10, -5] }, ra: { k: 'XL', d: [1, 0] }, back: ['ra', 'rl'] })], [{ p: 'stool' }]]
+]);
+
+cat('portrait', 'm', [
+  ['Profile, Looking Ahead', 'Standing', 1, 'Stand side-on and look ahead into the distance.',
+    ['Turn fully sideways', 'One hand in the pocket', 'Chin level, eyes ahead'],
+    'Ask him which side of his face he prefers.',
+    'The clean profile line.', 'Vision and focus, looking toward what comes next.', 'Contemplative and focused.',
+    [M({ face: 'r', o: 'm_suit', hd: -2, ll: [4, 1], rl: [-3, -1], la: { k: 'HL', d: [2, 3] }, ra: [-6, -4], back: ['ra', 'rl'] })]],
+  ['Hand to the Face', 'Standing', 1, 'Turn to the side and rest your jaw lightly on your hand.',
+    ['Forearm across the waist', 'Other elbow on it, loose fingers at the jaw', 'Keep the neck straight'],
+    'The fingers should barely touch the face.',
+    'The thoughtful hand and the angle of the head.', 'Thinking something through.', 'Thoughtful and introspective.',
+    [M({ face: 'fr', o: 'm_knit', hd: 8, ll: [4, -2], rl: [-2, 0], la: { k: 'Chin', d: [-2, 5], b: 'down' }, ra: [4, -86], back: ['ra', 'rl'] })]],
+  ['The Inside Pocket', 'Standing', 1, 'Slip a hand into the inside pocket of your jacket.',
+    ['Open the jacket slightly', 'Near hand reaches into the inside pocket', 'Look at the lens'],
+    'Ask him to put something away, so the gesture is real.',
+    'The hand at the chest and the open jacket.', 'A small, purposeful action.', 'Professional and composed.',
+    [M({ face: 'fl', o: 'm_charcoal', hd: -4, rl: [-4, 3], ll: [3, -1], ra: { k: 'ChR', d: [-5, 2], b: 'down' }, la: [4, 2], back: ['la', 'll'] })]],
+  ['Buttoning the Shirt', 'Standing', 1, 'Play with the top buttons of your shirt, one hand over the other.',
+    ['Both hands near the top buttons', 'Look down at the hands, then up', 'Weight on one leg'],
+    'Shoot the look down and the look up.',
+    'The hands and the collar.', 'Getting ready, a behind-the-scenes moment.', 'Casual and genuine.',
+    [M({ face: 'f', o: 'm_shirt', hd: 8, ll: [-4, -2], rl: [4, 2], la: { k: 'ChL', d: [9, -3], b: 'down' }, ra: { k: 'ChR', d: [-9, -1], b: 'down' } })]],
+  ['Fist in Hand', 'Standing', 1, 'Face the camera and press one fist into the other palm.',
+    ['Stand tall, facing the lens', 'Fist in the palm at waist height', 'Engage the arms slightly'],
+    'Great for coaches and athletes.',
+    'The arms and the squared shoulders.', 'Ready to get to work.', 'Strong and determined.',
+    [M({ face: 'f', o: 'm_tee', hd: 0, ll: [-6, -3], rl: [6, 3], la: { k: 'W', d: [-1, 7] }, ra: { k: 'W', d: [2, 7] } })]],
+  ['Hands on the Waist', 'Standing', 1, 'Stand tall with both hands on your waist.',
+    ['Feet shoulder width', 'Hands on the waist, elbows out', 'Shoot from slightly below'],
+    'A low angle makes this read as powerful.',
+    'The wide triangle of the arms.', 'The one in charge.', 'Commanding and authoritative.',
+    [M({ face: 'f', o: 'm_shirt', ll: [-7, -4], rl: [7, 4], la: { k: 'WL', d: [0, 2] }, ra: { k: 'WR', d: [0, 2] } })]],
+  ['Hand to the Neck', 'Standing', 1, 'Bring one hand lightly to the side of your neck.',
+    ['Three-quarter stance', 'Hand loose at the side of the neck', 'Look away, then back'],
+    'Keep the grip loose.',
+    'The raised elbow and the relaxed shoulder.', 'A candid, slightly shy moment.', 'Casual and thoughtful.',
+    [M({ face: 'fr', o: 'm_knit', hd: 10, ll: [5, -3], rl: [-3, -1], la: [-140, 60], ra: [6, 4], back: ['ra', 'rl'] })]],
+  ['One Hand in the Pocket', 'Standing', 1, 'One hand in the trouser pocket, the other relaxed.',
+    ['Thumb outside, fingers in', 'Other arm hangs loose', 'Weight on the back foot'],
+    'Asymmetry is what makes it look natural.',
+    'The balance between the busy hand and the relaxed one.', 'The easiest natural stance.', 'Casual ease.',
+    [M({ face: 'fl', o: 'm_suit', rl: [-3, 4], ll: [3, -1], ra: { k: 'HR', d: [-2, 4] }, la: [2, 2], back: ['la', 'll'] })]],
+  ['Reading a Book', 'Standing', 1, 'Hold an open book at chest height and look up from it.',
+    ['Book open at chest height', 'Read, then look up at the lens', 'Try closed, open and under the arm'],
+    'One prop gives you three different pictures.',
+    'The book and the moment he looks up.', 'An author, a teacher or simply a curious mind.', 'Intellectual and engaged.',
+    [M({ face: 'fr', o: 'm_knit', hd: 10, ll: [5, -3], rl: [-3, -1], la: { k: 'ChR', d: [10, 8] }, ra: { k: 'ChR', d: [12, 6] }, back: ['ra', 'rl'] })], [{ p: 'book', hand: 'l' }]],
+  ['Hands Behind the Back', 'Standing', 1, 'Stand tall with both hands clasped behind your back.',
+    ['Chest open, shoulders back', 'Hands clasped behind', 'Chin level'],
+    'Shoot in profile or three-quarter so the arms show.',
+    'The open chest and the upright posture.', 'Patience and composure.', 'Formal and composed.',
+    [M({ face: 'r', o: 'm_suit', hd: 0, ll: [4, 1], rl: [-3, -1], la: { k: 'WL', d: [-6, 6] }, ra: { k: 'WL', d: [-5, 8] }, back: ['ra', 'rl'] })]],
+  ['Hand on the Shoulder', 'Standing', 1, 'Place one hand on your opposite shoulder and look into the lens.',
+    ['Three-quarter stance', 'Far hand crosses to the near shoulder', 'Direct eye contact'],
+    'Keep the elbow low and relaxed.',
+    'The diagonal of the arm across the chest.', 'Self-assured, present, a little reflective.', 'Thoughtful and grounded.',
+    [M({ face: 'fr', o: 'm_charcoal', hd: 2, ll: [5, -3], rl: [-3, -1], la: [-4, -2], ra: { k: 'ShL', d: [4, 3], b: 'down' }, top: ['ra'] })]],
+  ['At the Table With a Laptop', 'Seated', 1, 'Sit at a table working on a laptop, then look up.',
+    ['Sit at the table, laptop open', 'Hands on the keyboard', 'Look up at the lens mid-task'],
+    'Style the table like a co-working desk: laptop, coffee, notebook.',
+    'The laptop and the moment of eye contact.', 'An entrepreneur at work.', 'Productive and professional.',
+    [M({ face: 'fr', o: 'm_shirt', sp: [12, 14], hd: 6, ll: [86, -4], rl: [82, -8], la: { at: [30, -77] }, ra: { at: [36, -76] }, back: ['ra', 'rl'] })], [{ p: 'chair', side: 'l' }, { p: 'table', x: 42, w: 60, laptop: 4, cup: 22 }]]
+]);
+
+/* Pose library, part 3: maternity and fine art nude (solo).
+   Maternity and nude poses follow classic studio references: floor, bed, window light, fabric. */
+cat('maternity', 'w', [
+  ['Side-Lying on the Floor', 'Lying', 1, 'Lie on your side on the floor, head resting on your hands.',
+    ['Lie on your side facing the camera', 'Rest the head on both stacked hands', 'Bend the knees slightly, feet together'],
+    'Use a plain grey backdrop that curves onto the floor.',
+    'The long line of the body and the bump resting on the floor.', 'Stillness, as if she is dreaming of the baby.', 'Peaceful and tender.',
+    [W({ face: 'f', preg: true, up: 5, sp: [-88, -86], hd: -80, rl: [80, 106], ll: [84, 98], la: { k: 'HeL', d: [2, 4], b: 'down' }, ra: { k: 'HeL', d: [4, -1] }, back: ['la'] })], [{ p: 'sheet' }]],
+  ['Hand Over the Bump', 'Standing', 1, 'In profile, drape one hand over the top of the bump.',
+    ['Stand sideways', 'Near hand rests over the top of the bump', 'Fingers relaxed and spread'],
+    'Low key: one light from the side, dark background.',
+    'The hand and the curve of the bump, nothing else.', 'A close, sculptural study of the bump.', 'Intimate and protective.',
+    [W({ face: 'r', preg: true, o: 'mat_black', hd: 16, ll: [3, 1], rl: [-4, -2], la: { k: 'Bel', d: [2, -6] }, ra: { k: 'Bel', d: [-6, 12] }, back: ['ra', 'rl'] })]],
+  ['Reclining, Arms Overhead', 'Lying', 2, 'Lie back on fabric with your arms stretched above your head, one knee raised.',
+    ['Lie back, upper body slightly propped', 'Stretch the arms above the head', 'Raise the knee nearest the camera'],
+    'Shoot low, level with the bump.',
+    'The stretch from fingertips to toes, with the bump as the high point.', 'A body at ease with its new shape.', 'Sensual and confident.',
+    [W({ face: 'r', preg: true, o: 'mat_black', sp: [-82, -74], hd: -110, ll: [124, 52], rl: [96, 88], la: [-110, -100], ra: [-118, -104], back: ['ra', 'rl'] })], [{ p: 'tulle', c: '#3A3634' }]],
+  ['Kneeling With a Sheet', 'Kneeling', 1, 'Kneel on the bed, sitting on your heels, a sheet held to your chest.',
+    ['Sit back on the heels on the bed', 'Hold the sheet at the chest with one hand', 'Other hand under the bump'],
+    'Use a window as the only light.',
+    'The softness of the sheet and the hand under the bump.', 'A quiet morning in bed, just before the birth.', 'Soft and intimate.',
+    [W({ face: 'r', preg: true, o: 'mat_wrap', up: 26, hd: 12, ll: [84, -90, 0], rl: [80, -92, 0], la: { k: 'ChR', d: [0, 2], b: 'down' }, ra: { k: 'Bel', d: [-6, 12] }, back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Window Light, Lace Robe', 'Standing', 1, 'Stand in profile by a bright window in a lace robe, hands on the bump.',
+    ['Stand side-on to the window', 'One hand under, one over the bump', 'Look down at the bump'],
+    'Expose for her skin and let the window glow.',
+    'The rim of light along the bump.', 'Waiting, calm, in her own world.', 'Serene and luminous.',
+    [W({ face: 'r', preg: true, o: 'mat_lace', hd: 14, ll: [3, 1], rl: [-4, -2], la: { k: 'Bel', d: [-4, -9] }, ra: { k: 'Bel', d: [-5, 16] }, back: ['ra', 'rl'] })], [{ p: 'window', x: 46, w: 70, h: 180, y: 16, curtain: 'r' }]],
+  ['Lying in Tulle', 'Lying', 2, 'Lie back in a cloud of tulle, one hand on the bump and one by your face.',
+    ['Lie on your back in the fabric', 'One hand rests on the bump', 'The other hand near the face'],
+    'Shoot from above, or at floor level from the head side.',
+    'The fabric around her and the soft hand.', 'A dreamy, painterly moment.', 'Dreamy and romantic.',
+    [W({ face: 'r', preg: true, o: 'mat_bare', oo: { top: '#F4F1EC', bot: '#DCE3EA' }, sp: [-88, -84], hd: -110, ll: [92, 88], rl: [118, 64], la: { k: 'HeR', d: [-2, 2] }, ra: { k: 'Bel', d: [-2, -4] }, back: ['ra'] })], [{ p: 'tulle', c: '#DCE3EA' }]],
+  ['Seated on the Bed', 'Seated', 1, 'Sit on the bed with legs folded to the side, hand on the bump.',
+    ['Sit on the bed, legs folded to one side', 'Back tall, shoulders open', 'Hand on the bump, look down'],
+    'White bedding and window light make it airy.',
+    'The profile of the bump above the folded legs.', 'Settling in at home, preparing the nest.', 'Calm and homely.',
+    [W({ face: 'r', preg: true, o: 'mat_black', up: 26, hd: 12, ll: [86, -84, 0], rl: [80, -92, 0], la: { k: 'Bel', d: [-3, -8] }, ra: { k: 'Bel', d: [-5, 12] }, back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Profile Cradle', 'Standing', 1, 'Stand fully sideways, one hand under the bump and one on top.',
+    ['Turn fully sideways', 'Lower hand supports the bump', 'Look down toward it'],
+    'Backlight from a window outlines the curve.',
+    'The full shape of the bump in profile.', 'The classic maternity portrait, the one grandparents frame.', 'Timeless and tender.',
+    [W({ face: 'r', preg: true, o: 'mat_sage', hd: 12, ll: [3, 1], rl: [-4, -2], la: { k: 'Bel', d: [-4, -9] }, ra: { k: 'Bel', d: [-5, 16] }, back: ['ra', 'rl'] })]],
+  ['Wall Lean', 'Leaning', 1, 'Lean your back against a wall, both hands on the bump.',
+    ['Shoulders and hips touch the wall', 'Both hands on the bump', 'Tilt the head toward the light'],
+    'A textured or coloured wall adds character.',
+    'The vertical wall against the round bump.', 'Resting for a moment, grounded and strong.', 'Relaxed and strong.',
+    [W({ face: 'r', preg: true, o: 'mat_jeans', sp: [-5, -8], hd: 6, ll: [8, 2], rl: [4, -2], la: { k: 'Bel', d: [-4, -8] }, ra: { k: 'Bel', d: [-4, 12] }, back: ['ra', 'rl'] })], [{ p: 'wall', side: 'l' }]],
+  ['Armchair Rest', 'Seated', 1, 'Sit back in an armchair, ankles crossed, hands on the bump.',
+    ['Sit deep in the chair', 'Cross the ankles', 'Both hands rest on the bump'],
+    'Shoot from standing height, looking slightly down.',
+    'The bump resting between the relaxed arms.', 'A comfortable pause in the last weeks.', 'Cosy and content.',
+    [W({ face: 'fr', preg: true, o: 'mat_blush', sp: [-10, -10], hd: 10, ll: [96, 20], rl: [90, 26], la: { k: 'Bel', d: [-3, -8] }, ra: { k: 'Bel', d: [-4, 10] }, back: ['ra', 'rl'] })], [{ p: 'armchair', back: 'l', w: 70, dx: -12 }]],
+  ['Walking in the Gown', 'Walking', 1, 'Walk slowly in profile, lifting the gown with one hand.',
+    ['Take short, slow steps', 'Near hand on the bump', 'Far hand lifts the gown slightly'],
+    'Golden hour, and shoot a burst.',
+    'The flow of the fabric behind her.', 'Moving toward what comes next.', 'Elegant and hopeful.',
+    [W({ face: 'r', preg: true, o: 'mat_sage', hd: 4, ll: [16, 6], rl: [-12, -24], la: { k: 'Bel', d: [-3, -7] }, ra: [-22, -14], back: ['ra', 'rl'] })]],
+  ['Fabric in the Wind', 'Standing', 3, 'Hold the gown fabric out behind you and face into the breeze.',
+    ['Profile stance, bump forward', 'Hold the fabric with both hands behind', 'Lift the chin toward the light'],
+    'Wind or a helper to toss the fabric.',
+    'The fabric flying behind the bump.', 'Freedom and strength, a goddess in the landscape.', 'Powerful and free.',
+    [W({ face: 'r', preg: true, o: 'mat_blush', hd: -10, ll: [4, 1], rl: [-3, -1], la: [-40, -30], ra: [-70, -60], back: ['ra', 'rl'] })], [{ p: 'fabric', side: 'l', c: '#E3CEC3' }]]
+]);
+
+cat('nude', 'w', [
+  ['Side-Lying, Head on Hands', 'Lying', 1, 'Lie on your side on the floor, head resting on stacked hands.',
+    ['Lie on your side facing the camera', 'Stack the hands under the cheek', 'Knees slightly bent, feet together'],
+    'A curved grey backdrop and one large soft light.',
+    'The long curve from shoulder to hip.', 'Rest and quiet, the body at ease.', 'Calm and restful.',
+    [W({ face: 'f', sp: [-88, -86], hd: -80, rl: [80, 106], ll: [84, 98], la: { k: 'HeL', d: [2, 4], b: 'down' }, ra: { k: 'HeL', d: [4, -1] }, back: ['la'] })], [{ p: 'sheet' }]],
+  ['Reclining, Arms Overhead', 'Lying', 2, 'Lie back with arms stretched above your head and one knee raised.',
+    ['Lie on the back, chest slightly lifted', 'Stretch both arms above the head', 'Raise the near knee'],
+    'Shoot low, from the side, with a dark backdrop.',
+    'The long stretch of the body.', 'Openness and confidence.', 'Sensual and free.',
+    [W({ face: 'r', sp: [-82, -74], hd: -110, ll: [124, 52], rl: [96, 88], la: [-110, -100], ra: [-118, -104], back: ['ra', 'rl'] })], [{ p: 'tulle', c: '#3A3634' }]],
+  ['Kneeling With a Sheet', 'Kneeling', 1, 'Kneel on the bed and hold a sheet to your chest.',
+    ['Sit back on the heels', 'Hold the sheet at the chest', 'Turn the head toward the window'],
+    'Window light only.',
+    'The fabric against the skin.', 'A private morning moment.', 'Soft and modest.',
+    [W({ face: 'r', o: 'wrap', up: 26, hd: 10, ll: [84, -90, 0], rl: [80, -92, 0], la: { k: 'ChR', d: [0, 2], b: 'down' }, ra: { k: 'ChR', d: [2, 6], b: 'down' }, back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Window Silhouette', 'Standing', 2, 'Stand in profile against a bright window, hands behind the head.',
+    ['Stand sideways in front of the window', 'Hands behind the head', 'Lift the chest slightly'],
+    'Expose for the window to keep only the outline.',
+    'The outline, not the detail.', 'The most discreet nude image there is.', 'Mysterious and graceful.',
+    [W({ face: 'r', sp: [-4, -8], hd: -6, ll: [6, 1], rl: [-3, -1], la: { k: 'Hc', d: [-9, -2], b: 'up' }, ra: { k: 'Hc', d: [-10, -4], b: 'up' }, back: ['ra', 'rl'], under: ['la'] })], [{ p: 'window', x: 4, w: 100, h: 190, y: 20, curtain: 'both' }]],
+  ['Seated on the Bed, Knees Up', 'Seated', 1, 'Sit on the bed with your knees drawn up and arms around them.',
+    ['Sit on the bed, knees up', 'Wrap the arms around the shins', 'Rest the cheek on the knees'],
+    'White bedding, soft light from the side.',
+    'The compact, closed shape.', 'Shelter and introspection.', 'Tender and introspective.',
+    [W({ face: 'r', up: 26, sp: [18, 24], hd: 40, ll: [146, 12], rl: [140, 4], la: { k: 'KL', d: [2, 12] }, ra: { k: 'KL', d: [-2, 14] }, back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['La Grande Odalisque', 'Lying', 2, 'Lie on your side on the bed with your back to the camera, looking over your shoulder.',
+    ['Lie on one side, back to the lens', 'Rest on the lower forearm', 'Turn the head back over the shoulder'],
+    'Side light raking along the back.',
+    'The long line of the back.', 'After Ingres: the back as a landscape.', 'Elegant and classical.',
+    [W({ face: 'b', hf: 'l', up: 26, sp: [-86, -80], hd: -66, rl: [80, 104], ll: [86, 96], la: [-150, -60], ra: { k: 'HR', d: [4, -2] }, back: ['la'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Back View, Arms Up', 'Standing', 1, 'Back to the camera, reach both arms straight above your head.',
+    ['Back to the lens, weight on one leg', 'Reach both arms high', 'Let the hip drop to one side'],
+    'Side light at 90 degrees to sculpt the back.',
+    'The shoulder blades and the waist.', 'Stretching toward the light.', 'Strong and graceful.',
+    [W({ face: 'b', hair: 'bun', sp: [4, -2], ll: [-2, 0], rl: [8, -4], la: [-174, -176], ra: [176, 178] })]],
+  ['Birth of Venus', 'Standing', 1, 'Weight on one leg, one arm across the chest, one hand low.',
+    ['Weight on one leg, other knee bent', 'One arm across the chest', 'Other hand rests low in front'],
+    'Classic sculpture light from one side.',
+    'The balance of the contrapposto.', 'After Botticelli, modest and timeless.', 'Serene and classical.',
+    [W({ face: 'f', sp: [-5, 4], hd: 8, rl: [-2, 0], ll: [5, -8], la: { k: 'ChR', d: [-3, 2], b: 'down' }, ra: { k: 'Cr', d: [-2, 4] } })]],
+  ['The Lounge', 'Lying', 1, 'Lie on your stomach on the bed, propped on your forearms, feet up behind you.',
+    ['Lie on the stomach', 'Prop the chest on the forearms', 'Cross the ankles in the air'],
+    'Shoot at mattress level.',
+    'The two curves, the raised chest and the raised feet.', 'Playful and relaxed.', 'Playful and light.',
+    [W({ face: 'l', up: 26, sp: [-86, -60], hd: -20, ll: [90, 150], rl: [90, 132], ra: [-2, -88], la: [4, -92], back: ['la', 'll'] })], [{ p: 'bed', h: 26, head: 'l', pillow: false }]],
+  ['Edge of the Bed, Rear View', 'Seated', 1, 'Sit on the edge of the bed with your back to the camera.',
+    ['Sit tall on the edge', 'Hands on the bed beside you', 'Turn the head to show the profile'],
+    'Window light from the side.',
+    'The straight spine and the shoulders.', 'A thought before the day starts.', 'Quiet and reflective.',
+    [W({ face: 'b', hf: 'l', hair: 'bun', hd: -6, ll: [-10, -2, null, 0.3], rl: [10, 2, null, 0.3], la: { k: 'HL', d: [-8, 8] }, ra: { k: 'HR', d: [8, 8] } })], [{ p: 'bed', seat: true, x1: -70, x2: 70, head: 'l' }]],
+  ['Sideways on a Chair', 'Seated', 2, 'Sit sideways on a chair, knees together, arms folded over them.',
+    ['Sit in profile on the chair', 'Knees together, toes pointed', 'Fold the arms over the knees, back arched'],
+    'A simple wooden chair, nothing else in frame.',
+    'The arch of the back and the pointed feet.', 'Classic boudoir elegance.', 'Elegant and confident.',
+    [W({ face: 'r', sp: [18, 24], hd: 10, ll: [84, 10, 40], rl: [80, 6, 40], la: { k: 'KL', d: [-2, -6] }, ra: { k: 'KL', d: [-6, -4] }, back: ['ra', 'rl'] })], [{ p: 'chair', side: 'l' }]],
+  ['Hand in Hair, Hand on Chest', 'Standing', 1, 'One hand in your hair, the other across your chest.',
+    ['Weight on one leg', 'One hand lifts into the hair', 'Other forearm rests across the chest'],
+    'Soft light from above.',
+    'The raised elbow and the covering arm.', 'Revealing and covering at once.', 'Graceful and a little bold.',
+    [W({ face: 'f', sp: [-5, 4], hd: 8, rl: [-2, 0], ll: [6, -8], la: { k: 'HeL', d: [0, -7], b: 'up' }, ra: { k: 'ChL', d: [3, 3], b: 'down' } })]]
+]);
+
+cat('nude', 'm', [
+  ['The Crouch', 'Crouching', 2, 'Squat deep, head bowed, arms hanging between your knees.',
+    ['Sink into a deep squat, knees wide', 'Let the arms hang between the knees', 'Bow the head, hands meet near the feet'],
+    'White background, hard light from above for sculpted muscle.',
+    'The shoulders, the arms and the bowed head.', 'Strength held in, like a statue waiting.', 'Powerful and introspective.',
+    [M({ face: 'f', hf: 'b', tk: 0.78, hd: 0, ll: [-118, 6, 0, 0.5], rl: [118, -6, 0, 0.5], la: { k: 'P', d: [4, 42] }, ra: { k: 'P', d: [-4, 40] }, top: ['la', 'ra'] })]],
+  ['Hands Behind the Head, Back View', 'Standing', 1, 'Back to the camera, lace your hands behind your head.',
+    ['Back to the lens, feet hip width', 'Hands behind the head, elbows wide', 'Weight on one leg'],
+    'Hard side light to carve the back.',
+    'The spread of the back muscles.', 'Calm strength.', 'Strong and composed.',
+    [M({ face: 'b', sp: [3, -2], ll: [-2, 0], rl: [8, -4], la: { k: 'Hc', d: [-3, -3], b: 'up' }, ra: { k: 'Hc', d: [3, -3], b: 'up' } })]],
+  ['Classical Stance', 'Standing', 1, 'Weight on one leg, one hand raised to the shoulder.',
+    ['Weight on the straight leg', 'Other knee bends softly', 'One hand rises to the shoulder'],
+    'One hard light from above and to the side.',
+    'The shift of weight between hips and shoulders.', 'After Michelangelo\'s David.', 'Heroic and calm.',
+    [M({ face: 'f', sp: [-5, 3], hd: -10, rl: [-2, 0], ll: [5, -8], la: { k: 'ShL', d: [3, 4], b: 'down' }, ra: [8, 4] })]],
+  ['The Thinker', 'Seated', 2, 'Sit on a block, elbow on your knee and chin on your hand.',
+    ['Sit forward on a box', 'Elbow on the knee', 'Chin rests on the back of the hand'],
+    'Single overhead light.',
+    'The coiled back and the arm under the chin.', 'After Rodin: thought as physical effort.', 'Intense and reflective.',
+    [M({ face: 'r', sp: [30, 36], hd: 34, ll: [84, -4], rl: [80, -10], la: { k: 'Chin', d: [0, 4], b: 'down' }, ra: { k: 'KR', d: [2, -4] }, back: ['ra', 'rl'] })], [{ p: 'cube', w: 48 }]],
+  ['Backward Chair', 'Seated', 2, 'Straddle a reversed chair, forearms folded on the backrest.',
+    ['Sit astride the chair', 'Forearms on the backrest', 'Lean forward slightly'],
+    'Shoot at chest height.',
+    'The arms on the chair and the relaxed shoulders.', 'The chair covers, the attitude reveals.', 'Confident and relaxed.',
+    [M({ face: 'r', sp: [8, 10], hd: 4, ll: [84, -4], rl: [80, -8], la: [55, 95, 1, 0.5], ra: [60, 100, 1, 0.5], back: ['ra', 'rl'] })], [{ p: 'chairback', side: 'r', h: 47, w: 44, bo: 25 }]],
+  ['Seated, Knee Up', 'Seated', 1, 'Sit on the floor with one knee up and your elbow resting on it.',
+    ['One leg long, one knee up', 'Elbow on the raised knee', 'Other hand behind you'],
+    'Shoot from the side, low.',
+    'The triangle of arm and knee.', 'Relaxed, open, unguarded.', 'Relaxed and open.',
+    [M({ face: 'r', sp: [-6, -4], hd: 4, ll: [138, 0], rl: [92, 88], la: { k: 'KL', d: [2, -4] }, ra: { k: 'HL', d: [-14, 12] }, back: ['ra', 'rl'] })]],
+  ['One Knee Down', 'Kneeling', 1, 'Kneel on one knee with a forearm on the raised knee.',
+    ['Front foot flat, back knee down', 'Forearm rests on the front knee', 'Head bows slightly'],
+    'Single strip light from the side.',
+    'The grounded base and the bowed head.', 'Resolve, like a statue.', 'Strong and grounded.',
+    [M({ face: 'r', sp: [10, 16], hd: 26, ll: [86, 0], rl: [4, -90, 0], la: { k: 'KL', d: [2, -7] }, ra: [4, 20], back: ['ra', 'rl'] })]],
+  ['Leaning Back on the Hands', 'Seated', 1, 'Sit on the floor and lean back on straight arms.',
+    ['Sit, one leg long, one knee up', 'Hands flat behind you', 'Head tilts back slightly'],
+    'Shoot from the side.',
+    'The straight arms and the open chest.', 'At ease, in the sun.', 'Confident and relaxed.',
+    [M({ face: 'r', sp: [-28, -34], hd: -14, ll: [128, 16], rl: [94, 88], la: [-30, -28], ra: [-36, -34], back: ['ra', 'rl'] })]],
+  ['Holding One Arm', 'Standing', 1, 'Reach across and hold your opposite upper arm.',
+    ['Three-quarter stance', 'Far hand crosses to hold the near arm', 'Look down and away'],
+    'Soft light, dark background.',
+    'The crossing arm, which covers the chest.', 'A vulnerable, inward moment.', 'Vulnerable and introspective.',
+    [M({ face: 'fr', hd: 18, ll: [5, -3], rl: [-3, -2], la: [-4, -2], ra: { k: 'EL', d: [2, -6], b: 'down' }, top: ['ra'] })]],
+  ['The Stretch', 'Standing', 2, 'Back to the camera, reach one arm high, the other behind you.',
+    ['Back to the lens', 'One arm reaches straight up', 'Other forearm across the lower back'],
+    'Side light.',
+    'The twist of the back.', 'Waking up the body.', 'Energetic and sculptural.',
+    [M({ face: 'b', sp: [6, -4], hd: 8, ll: [-2, 0], rl: [8, -4], ra: [174, 176], la: [-12, 70] })]],
+  ['Propped on an Elbow', 'Lying', 1, 'Lie on your side on the bed, propped on one elbow.',
+    ['Lie on the side, legs stacked', 'Prop the chest on the lower elbow', 'Top hand rests in front'],
+    'Shoot at mattress level.',
+    'The long line of the body.', 'Relaxed and at home.', 'Calm and confident.',
+    [M({ face: 'f', up: 26, sp: [-78, -64], hd: -52, rl: [84, 100], ll: [86, 94], la: [10, -40], ra: { k: 'W', d: [0, 12] }, back: ['la'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Coiled', 'Seated', 1, 'Sit with your knees drawn up and your forehead on your knees.',
+    ['Knees up to the chest', 'Arms around the shins', 'Forehead rests on the knees'],
+    'Low key, light only the back.',
+    'The closed, sculptural shape.', 'Withdrawal and quiet.', 'Introspective and sculptural.',
+    [M({ face: 'r', sp: [22, 32], hd: 64, ll: [146, 12], rl: [140, 4], la: { k: 'KL', d: [2, 12] }, ra: { k: 'KL', d: [-2, 14] }, back: ['ra', 'rl'] })]]
+]);
+
+/* Pose library, part 4: couples (romantic, maternity, fine art nude).
+   Romantic poses follow jasminealley.com couple poses. */
+cat('romantic', 'c', [
+  ['The Twirl', 'Standing', 2, 'He raises her hand while she spins under his arm.',
+    ['He lifts her hand above her head', 'She turns slowly on the spot', 'Catch the skirt as it flares'],
+    'Use a fast shutter and shoot the whole spin.',
+    'The raised arms and the flying skirt.', 'A dance with no music.', 'Joyful and playful.',
+    [M({ face: 'fr', x: -26, o: 'p_navy', hd: 8, ra: { k: 'XL', f: 1, d: [0, -2], b: 'down' }, la: [-6, -4] }),
+     W({ face: 'b', hf: 'l', x: 18, o: 'c_sage', oo: { flare: 16 }, hair: 'bun', la: [-172, 178], ra: [70, 90], ll: [-3, -1], rl: [8, -10] })]],
+  ['The Moment Before the Kiss', 'Standing', 1, 'Lean in until your faces almost touch, and stop.',
+    ['Stand close, facing each other', 'Lean in slowly', 'Stop just before the lips touch'],
+    'Shoot in profile, focus on the gap.',
+    'The tiny gap between the two faces.', 'Anticipation is more romantic than the kiss itself.', 'Tense, romantic, intriguing.',
+    [M({ face: 'r', x: -16, o: 'p_dark', sp: [2, 6], hd: 12, la: { k: 'WR', f: 1, d: [-2, 0] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 16, o: 'c_ivory', sp: [-2, -4], hd: -10, ra: { k: 'ChR', f: 0, d: [3, 4] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Piggyback', 'Standing', 2, 'He carries her on his back, both laughing.',
+    ['He leans forward, knees soft', 'She wraps her arms around his shoulders', 'He holds her legs at his sides'],
+    'Keep shooting: the laughing comes after the jump.',
+    'The two faces together and the laughter.', 'Trust and silliness.', 'Fun and carefree.',
+    [W({ face: 'r', x: -11, up: 46, o: 'c_sage', oo: { dress: 1.05 }, sp: [24, 30], hd: 24, ll: [76, 4], rl: [70, 0], la: { k: 'ChR', f: 1, d: [-4, 0] }, ra: [30, 60], top: ['la', 'll'], back: ['ra', 'rl'] }),
+     M({ face: 'r', x: 0, o: 'p_linen', sp: [18, 22], hd: 8, ll: [16, -8], rl: [6, -16], la: { k: 'KL', f: 0, d: [0, 3] }, ra: [-6, 30], top: ['la'], back: ['ra', 'rl'] })]],
+  ['Lift Her Up', 'Standing', 3, 'He lifts her by the waist, she looks down at him.',
+    ['He holds her around the hips, knees soft', 'Her hands rest on his shoulders', 'She bends her knees behind her'],
+    'Shoot from a low angle with the sky behind.',
+    'The height and her looking down at him.', 'Celebration, a win shared.', 'Powerful and celebratory.',
+    [M({ face: 'r', x: -8, o: 'p_navy', sp: [-4, -8], hd: -22, ll: [8, 4], rl: [-8, -4], la: { k: 'HR', f: 1, d: [0, 6] }, ra: [-10, 30], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 9, up: 46, o: 'c_sage', sp: [-6, -10], hd: -26, rl: [6, 66], ll: [0, 92], ra: { k: 'ShR', f: 0, d: [0, -1] }, la: [-10, -6], back: ['la', 'll'] })]],
+  ['The Dip', 'Standing', 3, 'He supports her back as she leans away and drops her head.',
+    ['He steps forward into a lunge', 'His arm holds the middle of her back', 'She arches back and releases the head'],
+    'Practise slowly first, then shoot fast.',
+    'The long line from her toes to her head.', 'The finale of a dance.', 'Dramatic and classic.',
+    [M({ face: 'r', x: -16, o: 'p_navy', sp: [14, 24], hd: 30, ll: [26, -4], rl: [-18, -22], la: { k: 'Back', f: 1, d: [2, 2] }, ra: [30, 60], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 22, o: 'c_ivory', sp: [50, 64], hd: 86, rl: [-14, -6], ll: [-44, -26], ra: { k: 'N', f: 0, d: [-2, 2] }, la: [44, 40], back: ['la', 'll'] })]],
+  ['Kick Up Your Foot', 'Standing', 1, 'She rises on tiptoe to kiss him, one foot kicking up behind.',
+    ['She wraps her arms around his neck', 'She rises onto one tiptoe', 'The other foot pops up behind'],
+    'Frame full length so the foot shows.',
+    'The popped foot, which makes a triangle.', 'The romance-film kiss.', 'Playful and dynamic.',
+    [W({ face: 'r', x: -12, o: 'c_sage', sp: [6, 10], hd: 16, ll: [4, 0, 40], rl: [-8, -100, 40], la: { k: 'N', f: 1, d: [-2, -2] }, ra: [-6, -4], top: ['la'], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 14, o: 'p_navy', sp: [-6, -10], hd: -22, ra: { k: 'WL', f: 0, d: [2, 2] }, la: [-4, -2], back: ['la', 'll'], top: ['ra'] })]],
+  ['Nestled', 'Seated', 1, 'She sits between his knees and leans back into him.',
+    ['He sits with knees up and apart', 'She sits in front and leans back on his chest', 'His arms wrap around her'],
+    'A blanket in a park or a sofa at home.',
+    'His arms around her and her relaxed weight.', 'Feeling safe with each other.', 'Safe and cherished.',
+    [M({ face: 'r', x: -18, o: 'p_linen', sp: [6, 10], hd: 22, ll: [146, 10], rl: [140, 6], la: { k: 'ChR', f: 1, d: [-2, 6] }, ra: [30, 60], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 10, o: 'c_ivory', oo: { dress: 1.1 }, sp: [-16, -20], hd: -4, ll: [126, 20], rl: [116, 10], la: { k: 'KL', d: [0, 6] }, ra: [10, 60], back: ['ra', 'rl'] })], [{ p: 'sheet' }]],
+  ['Hug From Behind', 'Standing', 1, 'He wraps his arms around her from behind, both faces to camera.',
+    ['He stands close behind her', 'His forearms cross in front of her', 'She holds his forearms'],
+    'Both faces must be visible and sharp.',
+    'The arms framing her and the two faces together.', 'Protection and warmth.', 'Protective and warm.',
+    [M({ face: 'fr', x: -8, o: 'p_navy', sp: [6, 10], hd: 16, la: { k: 'Bel', f: 1, d: [-6, 3] }, ra: { k: 'Bel', f: 1, d: [6, 4] }, fo: ['la', 'ra'] }),
+     W({ face: 'fr', x: 6, o: 'c_sage', hd: -6, la: { k: 'XL', f: 0, d: [-7, -3] }, ra: { k: 'XR', f: 0, d: [-7, -3] }, top: ['la', 'ra'] })]],
+  ['Hugging, Foreheads Together', 'Standing', 1, 'Hug and rest your foreheads together.',
+    ['Arms around each other', 'Lean in until the foreheads meet', 'Close the eyes'],
+    'Shoot in profile, backlit.',
+    'The foreheads and the closed eyes.', 'Nothing else matters for a moment.', 'Tender and deeply connected.',
+    [M({ face: 'r', x: -15, o: 'p_navy', sp: [4, 8], hd: 16, la: { k: 'WR', f: 1, d: [-3, 2] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 15, o: 'c_ivory', sp: [-4, -8], hd: -20, ra: { k: 'ShR', f: 0, d: [-2, 0] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Kiss on the Forehead', 'Standing', 1, 'He kisses her forehead while she closes her eyes.',
+    ['Face each other, close', 'She lowers her head slightly', 'His hands frame her face'],
+    'A tight crop works well.',
+    'His hands and her closed eyes.', 'Tenderness, a promise.', 'Sweet and gentle.',
+    [M({ face: 'r', x: -14, o: 'p_linen', sp: [4, 8], hd: 28, la: { k: 'HeL', f: 1, d: [0, 3] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 14, o: 'c_ivory', hd: -24, ra: { k: 'WR', f: 0, d: [2, 2] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['On His Shoulders', 'Standing', 2, 'She sits on his shoulders, he holds her legs.',
+    ['He crouches, she sits on his shoulders', 'He stands up slowly, holding her shins', 'She raises her arms or holds his head'],
+    'Shoot from below with open sky.',
+    'The height and her raised arms.', 'Festival energy, being on top of the world.', 'Playful and joyful.',
+    [M({ face: 'f', x: 0, o: 'p_linen', ll: [-6, -3], rl: [6, 3], la: { k: 'AL', f: 1, d: [0, -4] }, ra: { k: 'AR', f: 1, d: [0, -4] } }),
+     W({ face: 'f', x: 0, up: 108, o: 'c_sage', oo: { dress: 0.7 }, ll: [-26, 4, null, 0.42], rl: [26, -4, null, 0.42], la: [-160, -170], ra: [160, 170], top: ['ll', 'rl'] })]],
+  ['Lying Head to Head', 'Lying', 1, 'Lie on your backs in opposite directions, heads side by side.',
+    ['Lie on a blanket, heads meeting in the middle', 'Bodies point in opposite directions', 'Reach one hand toward each other'],
+    'Shoot from directly above, standing on a stool or a bench.',
+    'The symmetry and the two heads together.', 'A lazy afternoon in the park.', 'Intimate and relaxed.',
+    [M({ face: 'l', x: -50, o: 'p_navy', sp: [90, 92], hd: 96, ll: [-90, -90], rl: [-92, -88], ra: [88, 96], la: [-88, -92], back: ['ra'] }),
+     W({ face: 'r', x: 50, o: 'c_ivory', oo: { dress: 1.8 }, sp: [-90, -92], hd: -96, ll: [92, 88], rl: [90, 90], la: [-88, -96], ra: [88, 92], back: ['la'] })], [{ p: 'sheet' }]]
+]);
+
+cat('maternity', 'c', [
+  ['Embrace From Behind', 'Standing', 1, 'He stands behind her in profile, both hands on the bump.',
+    ['He stands close behind her', 'His hands cradle the bump', 'Her hands rest on top of his'],
+    'Soft side light from the bump side.',
+    'The four hands on the bump.', 'The family, already three.', 'Protective and tender.',
+    [M({ face: 'r', x: -10, o: 'p_linen', hd: 14, la: { k: 'Bel', f: 1, d: [-4, 6] }, ra: { k: 'Bel', f: 1, d: [-8, -8] }, top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 9, preg: true, o: 'mat_ivory', hd: 12, la: { k: 'Bel', d: [-4, -8] }, ra: [-6, -4], top: ['la'], back: ['ra', 'rl'] })]],
+  ['Face to Face', 'Standing', 1, 'Stand facing each other with the bump between you.',
+    ['Face each other a small step apart', 'His hand rests on the bump', 'Look at each other'],
+    'Profile, backlit.',
+    'The bump linking the two silhouettes.', 'Two parents looking at each other before the change.', 'Loving and expectant.',
+    [W({ face: 'r', x: -22, preg: true, o: 'mat_sage', hd: 8, la: { k: 'Bel', d: [-4, -8] }, ra: [-6, -4], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 20, o: 'p_linen', hd: -16, ra: { k: 'Bel', f: 0, d: [4, -2] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Kiss the Bump', 'Kneeling', 2, 'He kneels and kisses the bump while she looks down.',
+    ['He kneels on one knee facing her', 'His hands on her hips', 'She looks down, hand on his shoulder'],
+    'Shoot from the side so both profiles are clear.',
+    'His kiss and her look down.', 'Welcoming the baby already.', 'Tender and emotional.',
+    [W({ face: 'r', x: -8, preg: true, o: 'mat_ivory', hd: 22, la: { k: 'ShL', f: 1, d: [0, -1] }, ra: [-6, -4], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 34, o: 'p_linen', sp: [-36, -50], hd: -64, rl: [-86, 0], ll: [8, 90, 0], ra: { k: 'HR', f: 0, d: [2, 0] }, la: [-10, -6], back: ['la', 'll'] })]],
+  ['Listening to the Bump', 'Kneeling', 1, 'He kneels and rests his ear against the bump.',
+    ['He kneels upright facing the bump', 'Ear against the bump', 'She rests a hand on his head'],
+    'Shoot at bump height.',
+    'His ear on the bump and her hand on his head.', 'Waiting for a kick.', 'Candid and emotional.',
+    [W({ face: 'r', x: -8, preg: true, o: 'mat_sage', hd: 20, la: { k: 'Top', f: 1, d: [0, 0] }, ra: [-6, -4], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 34, o: 'p_linen', sp: [-18, -26], hd: -64, rl: [-8, 90, 0], ll: [-2, 90, 0], ra: { k: 'HR', f: 0, d: [4, 4] }, la: [-10, -6], back: ['la', 'll'] })]],
+  ['Four Hands, One Heart', 'Standing', 1, 'Front on, he stands behind her and all four hands frame the bump.',
+    ['He stands directly behind her', 'His hands on each side of the bump', 'Her hands make a heart in the middle'],
+    'Keep everything sharp so all hands read.',
+    'The hands, symmetrical around the bump.', 'The announcement photo.', 'Joyful and symbolic.',
+    [M({ face: 'f', x: -3, o: 'p_dark', hd: -4, la: { k: 'Bel', f: 1, d: [-9, 3] }, ra: { k: 'Bel', f: 1, d: [9, 3] }, fo: ['la', 'ra'] }),
+     W({ face: 'f', x: 3, preg: true, o: 'mat_bare', hd: 4, la: { k: 'Bel', d: [-3, -3] }, ra: { k: 'Bel', d: [3, -3] }, top: ['la', 'ra'] })]],
+  ['Forehead Touch', 'Standing', 1, 'Foreheads together, both hands on the bump.',
+    ['Stand in profile facing each other', 'Lean in until the foreheads touch', 'Both place a hand on the bump'],
+    'Golden hour behind them.',
+    'The two profiles and the bump in the middle.', 'Connection before the family grows.', 'Intimate and calm.',
+    [W({ face: 'r', x: -19, preg: true, o: 'mat_sage', sp: [2, 6], hd: 14, la: { k: 'Bel', d: [-3, -8] }, ra: [-6, -4], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 22, o: 'p_linen', sp: [-8, -14], hd: -24, ra: { k: 'Bel', f: 0, d: [4, 2] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Nestled on the Bed', 'Seated', 1, 'On the bed, she leans back into him, his hands on the bump.',
+    ['He sits against the headboard', 'She sits between his legs and leans back', 'His hands rest on the bump'],
+    'White bedding and window light.',
+    'His arms around her and the bump.', 'The nest, the last quiet weeks at home.', 'Cosy and protective.',
+    [M({ face: 'r', x: -24, up: 26, o: 'p_linen', sp: [-12, -10], hd: 14, ll: [96, 90], rl: [100, 86], la: { k: 'Bel', f: 1, d: [-4, -2] }, ra: [-34, -30], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 6, up: 26, preg: true, o: 'mat_bare', sp: [-14, -18], hd: -4, ll: [112, 56], rl: [104, 64], la: { k: 'Bel', d: [-5, 10] }, ra: [10, 60], back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Kneeling by the Armchair', 'Seated', 1, 'She sits in an armchair, he kneels beside her with a hand on the bump.',
+    ['She sits back, hands on the bump', 'He kneels at her side, facing her', 'His hand joins hers on the bump'],
+    'Shoot from slightly above.',
+    'The two hands meeting on the bump.', 'Care and attention.', 'Warm and devoted.',
+    [W({ face: 'fr', x: -12, preg: true, o: 'mat_blush', sp: [-10, -10], hd: 12, ll: [96, 20], rl: [90, 26], la: { k: 'Bel', d: [-3, -8] }, ra: { k: 'Bel', d: [-4, 10] }, back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 44, o: 'p_navy', sp: [-10, -16], hd: -30, rl: [-86, 0], ll: [8, 90, 0], ra: { k: 'Bel', f: 0, d: [6, 2] }, la: [-10, -6], back: ['la', 'll'] })], [{ p: 'armchair', f: 0, back: 'l', w: 70, dx: -12 }]],
+  ['Walking Hand in Hand', 'Walking', 1, 'Walk slowly holding hands, bodies turned toward the camera.',
+    ['Walk at an easy pace', 'Hold hands between you', 'Her free hand under the bump'],
+    'Golden hour, a beach or a field.',
+    'The joined hands and the moving gown.', 'Walking into the next chapter together.', 'Hopeful and calm.',
+    [W({ face: 'fr', x: -20, preg: true, o: 'mat_ivory', ll: [14, 4], rl: [-10, -20], la: { k: 'Bel', d: [-4, 10] }, ra: [16, 14], back: ['ra', 'rl'] }),
+     M({ face: 'fr', x: 22, o: 'p_linen', ll: [14, 4], rl: [-10, -20], la: { k: 'XR', f: 0 }, ra: [-8, -4], back: ['ra', 'rl'] })]],
+  ['The Scan on the Sofa', 'Seated', 1, 'Sit close on the sofa, looking at the scan together.',
+    ['Sit side by side, turned toward each other', 'She holds the scan in front of the bump', 'Both look at it'],
+    'Focus on the scan, faces soft.',
+    'The scan held between them.', 'Sharing the first picture of the baby.', 'Excited and tender.',
+    [M({ face: 'fr', x: -26, o: 'p_navy', sp: [6, 10], hd: 22, ll: [90, -2], rl: [84, -8], la: { k: 'KL', d: [-2, -6] }, ra: [10, 30], back: ['ra', 'rl'] }),
+     W({ face: 'fl', x: 22, preg: true, o: 'mat_blush', sp: [-4, -6], hd: -16, rl: [-92, 2], ll: [-84, 6], ra: { k: 'Bel', d: [-4, -6] }, la: { k: 'Bel', d: [-6, -4] }, back: ['ll'], top: ['ra'] })], [{ p: 'sofa', f: 0, back: 'b', w: 130, cx: -2 }, { p: 'card', f: 1, hand: 'r' }]],
+  ['Slow Dance', 'Standing', 1, 'Sway together, her arms on his shoulders.',
+    ['Face each other, the bump between you', 'Her hands rest on his shoulders', 'His hands at her lower back'],
+    'Shoot through the movement.',
+    'The sway and the bump between them.', 'A private dance before the baby arrives.', 'Romantic and gentle.',
+    [W({ face: 'r', x: -19, preg: true, o: 'mat_ivory', hd: -6, la: { k: 'SL', f: 1, d: [0, -2] }, ra: [-6, -4], top: ['la'], back: ['ra', 'rl'] }),
+     M({ face: 'l', x: 22, o: 'p_dark', sp: [-4, -6], hd: -12, ra: { k: 'WL', f: 0, d: [-2, 0] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Side Hug', 'Standing', 1, 'She faces the camera, he hugs her from the side with a hand on the bump.',
+    ['She stands facing the lens', 'He stands at her side, turned toward her', 'His hand on the bump, head on her shoulder'],
+    'Her face is the focus.',
+    'Her face and his gesture.', 'Support and pride.', 'Proud and affectionate.',
+    [M({ face: 'fr', x: -16, o: 'p_navy', sp: [6, 12], hd: 22, la: { k: 'Bel', f: 1, d: [-2, 2] }, ra: [-4, -2], fo: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'f', x: 10, preg: true, o: 'mat_blush', hd: -8, la: { k: 'Bel', d: [-4, -6] }, ra: { k: 'Bel', d: [5, -2] } })]]
+]);
+
+cat('nude', 'c', [
+  ['The Embrace', 'Standing', 1, 'Hold each other close, her arms around his neck.',
+    ['Stand chest to chest', 'Her arms around his neck', 'His arms around her waist, heads together'],
+    'Rim light to separate both outlines.',
+    'The single shape made by two bodies.', 'Closeness without words.', 'Intimate and warm.',
+    [M({ face: 'r', x: -13, hd: 14, la: { k: 'WR', f: 1, d: [-2, 0] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 13, hair: 'bun', hd: -12, ra: { k: 'N', f: 0, d: [0, -2] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Arms Across', 'Standing', 1, 'He stands behind her and crosses his forearms over her chest.',
+    ['He stands close behind her', 'His forearms cross over her chest', 'She holds his forearms'],
+    'One light from above.',
+    'His arms as a frame and a cover.', 'Protection and trust.', 'Protective and calm.',
+    [M({ face: 'f', x: -3, hd: 10, la: { k: 'ChR', f: 1, d: [2, 2] }, ra: { k: 'ChL', f: 1, d: [-2, 4] }, fo: ['la', 'ra'] }),
+     W({ face: 'f', x: 3, hd: -8, la: { k: 'ChL', d: [0, 7], b: 'down' }, ra: { k: 'ChR', d: [0, 8], b: 'down' }, top: ['la', 'ra'] })]],
+  ['Almost Touching', 'Standing', 2, 'Faces close but not touching, his fingertips along her jaw.',
+    ['Stand in profile, very close', 'Leave a small gap between the faces', 'His fingertips along her jaw'],
+    'One light from behind.',
+    'The gap between the faces.', 'Anticipation.', 'Tense and romantic.',
+    [M({ face: 'r', x: -16, sp: [2, 6], hd: 10, la: { k: 'Chin', f: 1, d: [2, 1] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 16, sp: [-2, -4], hd: -8, ra: { k: 'ChR', f: 0, d: [3, 4] }, la: [-4, -2], back: ['la', 'll'] })]],
+  ['Back to Back, Seated', 'Seated', 1, 'Sit on the floor back to back, knees drawn up.',
+    ['Sit back to back', 'Knees up, arms around the shins', 'Both heads rest back'],
+    'Symmetrical light from both sides.',
+    'The mirror symmetry.', 'Leaning on each other.', 'Trusting and serene.',
+    [M({ face: 'l', x: -16, sp: [0, 2], hd: -4, ll: [-146, -12], rl: [-140, -4], la: { k: 'KL', d: [2, 12] }, ra: { k: 'KL', d: [4, 14] }, back: ['la', 'll'] }),
+     W({ face: 'r', x: 15, hair: 'bun', sp: [0, -2], hd: 4, ll: [146, 12], rl: [140, 4], la: { k: 'KR', d: [-2, 12] }, ra: { k: 'KR', d: [-4, 14] }, back: ['ra', 'rl'] })]],
+  ['Spooning', 'Lying', 1, 'Lie on your sides on the bed, he curls behind her.',
+    ['Both lie on the same side', 'He lies close behind her', 'His arm rests over her waist'],
+    'Shoot from above or at mattress level.',
+    'Two curves nested into one.', 'Rest and safety.', 'Restful and tender.',
+    [M({ face: 'f', x: -6, up: 33, sp: [-88, -86], hd: -76, rl: [84, 100], ll: [80, 96], la: { k: 'HeL', d: [0, 7], b: 'down' }, ra: { k: 'W', f: 1, d: [0, 4] }, top: ['ra'] }),
+     W({ face: 'f', x: 6, up: 26, sp: [-88, -84], hd: -70, rl: [84, 100], ll: [80, 94], la: { k: 'HeL', d: [0, 6], b: 'down' }, ra: { k: 'HR', d: [4, 0] } })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['The Nest', 'Seated', 2, 'On the bed, he sits behind her and she leans back into his chest.',
+    ['He sits with knees up and apart', 'She sits between his knees', 'His arms wrap around her'],
+    'Soft window light.',
+    'His body framing hers.', 'Warm and safe.', 'Safe and modest.',
+    [M({ face: 'r', x: -18, up: 26, sp: [6, 10], hd: 22, ll: [146, 10], rl: [140, 6], la: { k: 'ChR', f: 1, d: [-2, 4] }, ra: [30, 60], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'r', x: 10, up: 26, sp: [-16, -20], hd: -4, hair: 'bun', ll: [126, 20], rl: [116, 10], la: { k: 'KL', d: [0, 6] }, ra: [10, 60], back: ['ra', 'rl'] })], [{ p: 'bed', h: 26, head: 'l' }]],
+  ['Kneeling Embrace', 'Kneeling', 2, 'Kneel facing each other on the bed and hold on.',
+    ['Kneel upright, knees almost touching', 'Arms around each other', 'Rest the head on the shoulder'],
+    'Shoot from the side at chest height.',
+    'The sculptural pair shape.', 'Devotion.', 'Sculptural and quiet.',
+    [M({ face: 'r', x: -12, up: 26, sp: [4, 8], hd: 20, ll: [4, -90, 0], rl: [2, -90, 0], la: { k: 'Back', f: 1, d: [2, 0] }, ra: [-4, -2], top: ['la'], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 12, up: 26, sp: [-4, -8], hd: -14, rl: [-4, 90, 0], ll: [-2, 90, 0], ra: { k: 'ShR', f: 0, d: [-4, -2] }, la: [-4, -2], back: ['la', 'll'] })], [{ p: 'bed', h: 26, head: 'l', pillow: false }]],
+  ['Head on His Shoulder', 'Seated', 1, 'Sit side by side on the edge of the bed, her head on his shoulder.',
+    ['Sit close, hips touching', 'His arm around her shoulders', 'She rests her head on him'],
+    'Soft key light.',
+    'The lean of her head.', 'Companionship.', 'Calm and companionable.',
+    [M({ face: 'fr', x: -18, hd: 8, ll: [86, -4], rl: [80, -8], ra: { k: 'ShR', f: 1, d: [-2, 2] }, la: { k: 'KL', d: [-4, -5] }, ho: ['ra'], back: ['rl'] }),
+     W({ face: 'fr', x: 16, hair: 'bun', sp: [-8, -14], hd: -26, ll: [84, 0], rl: [78, -6], la: { k: 'KL', d: [-3, -5] }, ra: { k: 'KL', d: [-9, -4] }, back: ['ra', 'rl'] })], [{ p: 'bed', seat: true, f: 0, x1: -70, x2: 70, head: 'l' }]],
+  ['Seated Foreheads', 'Kneeling', 1, 'Sit on your heels facing each other, foreheads touching.',
+    ['Kneel and sit back on the heels', 'Face each other, knees almost touching', 'Lean in, foreheads together'],
+    'Symmetrical side light.',
+    'The mirrored shapes and the touching foreheads.', 'Stillness together.', 'Meditative and intimate.',
+    [M({ face: 'r', x: -30, sp: [14, 22], hd: 30, ll: [84, -90, 0], rl: [80, -92, 0], la: { k: 'KL', d: [-4, -6] }, ra: [-4, -2], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 30, hair: 'bun', sp: [-14, -22], hd: -32, rl: [-84, 90, 0], ll: [-80, 92, 0], ra: { k: 'KR', d: [4, -6] }, la: [4, 2], back: ['la', 'll'] })]],
+  ['Connected at the Hip', 'Standing', 2, 'Hips touching, upper bodies leaning apart, hands joined.',
+    ['Stand face to face in profile', 'Hips touch, shoulders lean away', 'Hold hands low'],
+    'Silhouette against a bright background.',
+    'The one point of contact.', 'Connection with space to breathe.', 'Graphic and balanced.',
+    [M({ face: 'r', x: -12, sp: [-6, -12], hd: -4, ll: [8, 2], rl: [-4, -2], la: { k: 'XR', f: 1 }, ra: [-4, -2], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 12, hair: 'bun', sp: [6, 12], hd: 4, rl: [-8, -2], ll: [4, 2], ra: [-28, -36], la: [4, 2], back: ['la', 'll'] })]],
+  ['Palms', 'Standing', 2, 'Stand apart and meet palm to palm.',
+    ['Face each other a step apart', 'Raise one hand each until the palms meet', 'Keep space between the bodies'],
+    'Silhouette against a bright background.',
+    'The touching palms in the middle of the frame.', 'Minimal contact, maximum tension.', 'Graphic and tense.',
+    [M({ face: 'r', x: -26, hd: 4, la: { k: 'XR', f: 1, d: [0, 0] }, ra: [-4, -2], back: ['ra', 'rl'] }),
+     W({ face: 'l', x: 26, hd: -4, ra: [-100, -104], la: [-4, -2], back: ['la', 'll'] })]],
+  ['Silhouette Walk', 'Walking', 1, 'Walk away hand in hand toward the light.',
+    ['Walk away from the lens', 'Hold hands between you', 'Keep a small gap between the bodies'],
+    'Expose for the sky to get clean silhouettes.',
+    'The two outlines and the joined hands.', 'Anonymous and universal.', 'Hopeful and private.',
+    [M({ face: 'b', x: -20, ll: [-4, -2], rl: [2, 12, 30], la: [-6, -4], ra: { k: 'XL', f: 1 } }),
+     W({ face: 'b', x: 18, hair: 'bun', ll: [-2, 12, 30], rl: [4, 2], la: [-14, -6], ra: [8, 4] })]]
+]);
+
+(() => {
+  const CATS = {
+    street: { name: 'Street Fashion', blurb: 'Walls, kerbs, steps and movement. Poses that make the city part of the outfit.' },
+    portrait: { name: 'Portrait & Business', blurb: 'Confident, approachable frames for bios, team pages and profile pictures.' },
+    romantic: { name: 'Romantic', blurb: 'Close, warm and easy to direct. For engagements, anniversaries and date-night sessions.' },
+    maternity: { name: 'Maternity', blurb: 'Poses that show the bump. Profile and three-quarter angles do most of the work.' },
+    nude: { name: 'Fine Art Nude', blurb: 'Shape, line and light. Every figure is an abstract mannequin.' }
+  };
+  const WHO = { w: 'Woman', m: 'Man', c: 'Couple' };
+  const ORDER = { w: ['street', 'portrait', 'maternity', 'nude'], m: ['street', 'portrait', 'nude'], c: ['romantic', 'maternity', 'street', 'nude'] };
+  const LVL = ['', 'Easy', 'Medium', 'Advanced'];
+  const ICONS = {
+    w: { fig: [W({ face: 'f', o: 'w_turtle', la: [-8, -4], ra: [8, 4] })] },
+    m: { fig: [M({ face: 'f', o: 'm_shirt', la: [-8, -4], ra: [8, 4] })] },
+    c: { fig: [M({ face: 'f', x: -16, o: 'p_navy', ra: { k: 'XL', f: 1 } }), W({ face: 'f', x: 16, o: 'c_sage', la: [-14, -8] })] }
+  };
+
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } }
+  };
+  const byId = Object.fromEntries(POSES.map(p => [p.id, p]));
+  let saved = store.get('poseatlas.saved', []).filter(id => byId[id]);
+  const S = { who: 'w', cat: 'street', type: 'All' };
+  const fromHash = () => {
+    const h = (location.hash || '').slice(1).split('-');
+    if (WHO[h[0]]) { S.who = h[0]; if (ORDER[h[0]].includes(h[1])) S.cat = h[1]; else S.cat = ORDER[h[0]][0]; }
+    else { const last = store.get('poseatlas.view', null); if (last && WHO[last.who] && ORDER[last.who].includes(last.cat)) { S.who = last.who; S.cat = last.cat; } }
+  };
+  const $ = s => document.querySelector(s);
+  const el = (tag, attrs = {}, html = '') => { const e = document.createElement(tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (html) e.innerHTML = html; return e; };
+  const cache = new Map();
+  const art = (p, mirror = false) => { const k = p.id + (mirror ? 'm' : ''); if (!cache.has(k)) cache.set(k, Fig.svg(p, { mirror })); return cache.get(k); };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const lvl = n => `<span class="lvl" title="${LVL[n]}">${[1, 2, 3].map(i => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
+  const readRows = p => `<div><dt>Emphasise</dt><dd>${esc(p.em)}</dd></div><div><dt>The idea</dt><dd>${esc(p.idea)}</dd></div><div><dt>The feeling</dt><dd>${esc(p.feel)}</dd></div>`;
+  const hov = p => `<div class="hov" aria-hidden="true"><p class="hov-d">${esc(p.d)}</p><dl>${readRows(p)}</dl><span class="hov-more">Open for steps</span></div>`;
+  const BOOK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11l-4-2.8-4 2.8z" stroke-linejoin="round"/></svg>';
+
+  function list() { return POSES.filter(p => p.who === S.who && p.cat === S.cat); }
+  function visible() { const l = list(); return S.type === 'All' ? l : l.filter(p => p.t === S.type); }
+
+  function renderWho() {
+    const box = $('#who'); box.innerHTML = '';
+    Object.keys(WHO).forEach(k => {
+      const b = el('button', { type: 'button', 'aria-pressed': String(S.who === k) }, Fig.svg(ICONS[k], { scale: 1 }) + `<span>${WHO[k]}</span>`);
+      b.addEventListener('click', () => { if (S.who === k) return; S.who = k; S.cat = ORDER[k].includes(S.cat) ? S.cat : ORDER[k][0]; S.type = 'All'; update(); });
+      box.appendChild(b);
+    });
+  }
+  function renderScen() {
+    const box = $('#scen'); box.innerHTML = '';
+    ORDER[S.who].forEach(c => {
+      const n = POSES.filter(p => p.who === S.who && p.cat === c).length;
+      const b = el('button', { type: 'button', class: 'chip', 'aria-pressed': String(S.cat === c) }, `${CATS[c].name} <span class="n">${n}</span>`);
+      b.addEventListener('click', () => { S.cat = c; S.type = 'All'; update(); });
+      box.appendChild(b);
+    });
+  }
+  function renderFilters() {
+    const box = $('#filters'); box.innerHTML = '';
+    const types = ['All', ...new Set(list().map(p => p.t))];
+    types.forEach(t => {
+      const b = el('button', { type: 'button', class: 'chip', 'aria-pressed': String(S.type === t) }, t);
+      b.addEventListener('click', () => { S.type = t; renderFilters(); renderGrid(); });
+      box.appendChild(b);
+    });
+  }
+  function renderHead() {
+    const c = CATS[S.cat], n = visible().length;
+    $('#sec-title').innerHTML = `${esc(c.name)} <span>for ${S.who === 'c' ? 'couples' : S.who === 'w' ? 'women' : 'men'}</span>`;
+    $('#sec-blurb').textContent = c.blurb;
+    $('#sec-meta').textContent = `${String(n).padStart(2, '0')} poses`;
+    $('#notice').hidden = S.cat !== 'nude';
+  }
+  function saveBtn(p) {
+    const on = saved.includes(p.id);
+    const b = el('button', { type: 'button', class: 'save', 'aria-pressed': String(on), 'aria-label': (on ? 'Remove from' : 'Add to') + ' shot list', title: on ? 'Remove from shot list' : 'Add to shot list' }, BOOK);
+    b.addEventListener('click', e => { e.stopPropagation(); toggleSave(p.id); });
+    return b;
+  }
+  function renderGrid() {
+    renderHead();
+    const g = $('#grid'); g.innerHTML = '';
+    const v = visible();
+    if (!v.length) { g.appendChild(el('p', { class: 'empty' }, 'No poses match this filter.')); return; }
+    v.forEach((p, i) => {
+      const c = el('article', { class: 'card', tabindex: '0', role: 'button', 'aria-label': `${p.n}. ${p.d}` });
+      c.innerHTML = `<div class="plate"><span class="no">${String(i + 1).padStart(2, '0')}</span>${art(p)}${hov(p)}</div>
+        <div class="card-body"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p>
+        <div class="meta"><span>${esc(p.t)}</span>${lvl(p.lv)}<span>${LVL[p.lv]}</span></div></div>`;
+      c.querySelector('.plate').appendChild(saveBtn(p));
+      c.addEventListener('click', () => openDetail(p.id));
+      c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(p.id); } });
+      g.appendChild(c);
+    });
+  }
+  function update() {
+    store.set('poseatlas.view', { who: S.who, cat: S.cat });
+    const h = `#${S.who}-${S.cat}`;
+    if (location.hash !== h) { try { history.replaceState(null, '', h); } catch (e) { /* ignore */ } }
+    renderWho(); renderScen(); renderFilters(); renderGrid();
+  }
+
+  // detail
+  const dlg = $('#detail');
+  let cur = null, mirror = false;
+  function openDetail(id) {
+    cur = id; mirror = false; fillDetail();
+    if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); }
+    const sh = dlg.querySelector('.sheet'); if (sh) { sh.scrollTop = 0; sh.focus({ preventScroll: true }); }
+  }
+  function fillDetail() {
+    const p = byId[cur]; if (!p) return;
+    const v = visible(), idx = v.findIndex(x => x.id === p.id);
+    const on = saved.includes(p.id);
+    $('#detail').innerHTML = `<div class="sheet" tabindex="-1"><button class="x close-x" type="button" data-a="close" aria-label="Close">✕</button>
+      <div class="plate"><span class="no">${String(idx + 1).padStart(2, '0')} / ${String(v.length).padStart(2, '0')}</span>${art(p, mirror)}</div>
+      <div class="sheet-body">
+        <div class="sheet-top"><span class="eyebrow">${WHO[p.who]} · ${CATS[p.cat].name}</span></div>
+        <h2>${esc(p.n)}</h2>
+        <p class="dir">${esc(p.d)}</p>
+        <div class="meta"><span>${esc(p.t)}</span>${lvl(p.lv)}<span>${LVL[p.lv]}</span></div>
+        <ol>${p.s.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+        <dl class="read">${readRows(p)}</dl>
+        <div class="note"><span class="k">Photographer's tip</span><span class="v">${esc(p.tip)}</span></div>
+        <div class="sheet-actions">
+          <button class="btn ${on ? '' : 'primary'}" type="button" data-a="save">${BOOK.replace('<svg', '<svg fill="none" stroke="currentColor" stroke-width="1.6"')}${on ? 'Saved to shot list' : 'Add to shot list'}</button>
+          <button class="btn" type="button" data-a="mirror" aria-pressed="${mirror}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 1.5v13M5.5 4 2 8l3.5 4M10.5 4 14 8l-3.5 4"/></svg>Mirror</button>
+          <span style="flex:1"></span>
+          <div class="nav"><button class="btn" type="button" data-a="prev" aria-label="Previous pose">←</button><button class="btn" type="button" data-a="next" aria-label="Next pose">→</button></div>
+        </div>
+      </div></div>`;
+  }
+  function step(d) { const v = visible(); if (!v.length) return; const i = v.findIndex(x => x.id === cur); const n = v[(i + d + v.length) % v.length]; cur = n.id; mirror = false; fillDetail(); }
+  dlg.addEventListener('click', e => {
+    if (e.target === dlg) { dlg.close(); return; }
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    const act = a.dataset.a;
+    if (act === 'close') dlg.close();
+    if (act === 'save') { toggleSave(cur); fillDetail(); }
+    if (act === 'mirror') { mirror = !mirror; fillDetail(); }
+    if (act === 'prev') step(-1);
+    if (act === 'next') step(1);
+  });
+  document.addEventListener('keydown', e => {
+    if (!dlg.open) return;
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
+
+  // shot list
+  function toggleSave(id) {
+    const i = saved.indexOf(id);
+    if (i >= 0) saved.splice(i, 1); else saved.push(id);
+    store.set('poseatlas.saved', saved);
+    toast(i >= 0 ? 'Removed from shot list' : 'Added to shot list');
+    renderCount(); renderGrid(); renderShots();
+  }
+  function renderCount() { $('#count').textContent = saved.length; }
+  function renderShots() {
+    const box = $('#shots'); box.innerHTML = '';
+    if (!saved.length) { box.appendChild(el('p', { class: 'drawer-empty' }, 'Tap the bookmark on any pose to add it here. Your list stays in this browser.')); return; }
+    saved.forEach((id, i) => {
+      const p = byId[id];
+      const b = el('button', { type: 'button', class: 'shot' }, `<div class="plate">${art(p)}</div><span>${String(i + 1).padStart(2, '0')} ${esc(p.n)}<small>${WHO[p.who]} · ${CATS[p.cat].name}</small></span>`);
+      b.addEventListener('click', () => { S.who = p.who; S.cat = p.cat; S.type = 'All'; update(); closeDrawer(); openDetail(p.id); });
+      box.appendChild(b);
+    });
+  }
+  const drawer = $('#drawer'), scrim = $('#scrim');
+  function openDrawer() { renderShots(); drawer.classList.add('open'); scrim.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); $('#drawer-close').focus(); }
+  function closeDrawer() { drawer.classList.remove('open'); scrim.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+  $('#open-list').addEventListener('click', openDrawer);
+  $('#drawer-close').addEventListener('click', closeDrawer);
+  scrim.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer(); });
+  $('#clear-list').addEventListener('click', e => {
+    const b = e.currentTarget;
+    if (!saved.length) return;
+    if (b.dataset.confirm !== '1') { b.dataset.confirm = '1'; b.textContent = 'Tap again to clear'; setTimeout(() => { b.dataset.confirm = ''; b.textContent = 'Clear list'; }, 2500); return; }
+    saved = []; store.set('poseatlas.saved', saved); b.dataset.confirm = ''; b.textContent = 'Clear list';
+    renderCount(); renderShots(); renderGrid(); toast('Shot list cleared');
+  });
+  $('#copy-list').addEventListener('click', () => {
+    if (!saved.length) { toast('Your shot list is empty'); return; }
+    const txt = 'Shot list\n\n' + saved.map((id, i) => { const p = byId[id]; return `${i + 1}. ${p.n} (${WHO[p.who]}, ${CATS[p.cat].name})\n   ${p.d}\n   Emphasise: ${p.em}\n   Feeling: ${p.feel}`; }).join('\n\n');
+    const done = () => toast('Shot list copied');
+    const fallback = () => { const t = el('textarea'); t.value = txt; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) { toast('Copy is blocked here'); } t.remove(); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+  });
+  let tt;
+  function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 1800); }
+
+  window.addEventListener('hashchange', () => { fromHash(); update(); });
+  $('#total').textContent = POSES.length;
+  fromHash(); renderCount(); update();
+})();
+
+</script>
+</body>
+</html>
